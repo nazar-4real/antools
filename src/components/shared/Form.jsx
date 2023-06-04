@@ -6,7 +6,7 @@ import { SearchIcon } from './SearchIcon'
 
 export const Form = ({ className, placeholder, children }) => {
 
-  const { theme: { value, colors: { auxiliary, action } } } = useContext(ThemeContext)
+  const { theme: { value, colors: { auxiliary, action, text } } } = useContext(ThemeContext)
 
   return (
     <form className={`form ${className}`}>
@@ -21,7 +21,7 @@ export const Form = ({ className, placeholder, children }) => {
           type="text"
           placeholder={placeholder}
           style={{
-            color: value !== 'default' && action
+            color: value === 'light' ? text : value !== 'default' && action
           }}
         />
         {children}

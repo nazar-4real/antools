@@ -106,9 +106,7 @@ section {
   }
 
   &:hover {
-    background: $deepBlue;
-    color: $orange;
-    border-color: transparent;
+    transform: scale(1.05);
   }
 
   &.outlined {
@@ -121,16 +119,6 @@ section {
       background: $orange;
       color: $white;
     }
-  }
-}
-
-.main-link {
-  @include insertFont(16px, 24px, 600);
-  color: $lighter;
-  transition: all 0.3s;
-
-  &:hover {
-    color: $orange;
   }
 }
 
@@ -171,7 +159,7 @@ section {
     background: #283036;
     border-radius: 15px;
     width: 100%;
-    padding: 8px 11px;
+    padding: 8px 11px 8px 21px;
     transition: all 0.3s;
   }
 
@@ -313,11 +301,6 @@ section {
   }
 
   @media (not (hover)) {
-    .main-link {
-      color: $white;
-      background: $orange;
-    }
-
     &-action {
       background: #283036;
       box-shadow: 0px 5px 10px -3px rgba(18, 18, 18, 0.15);

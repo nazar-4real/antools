@@ -127,7 +127,13 @@ const Footer = () => {
         <div className="developer" style={{
           color: value === 'light' && text
         }}>
-          Developed by <a href="#" style={{ color: action }}>{import.meta.env.VITE_APP_DEVELOPER}</a>
+          Developed by <a href="#" style={{
+            color: action,
+            fontWeight: 600,
+            fontFamily: 'fantasy'
+          }}>
+            {import.meta.env.VITE_APP_DEVELOPER}
+          </a>
         </div>
       </div>
     </footer>

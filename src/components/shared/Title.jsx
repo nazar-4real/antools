@@ -8,7 +8,8 @@ export const Title = ({ children, ...props }) => {
     <h2
       className="main-title"
       style={{
-        color: value !== 'default' && action
+        color: value !== 'default' && action,
+        ...(value === 'light' && { filter: 'brightness(.9)' })
       }}
       {...props}>
       {children}

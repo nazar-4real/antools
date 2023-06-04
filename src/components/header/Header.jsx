@@ -134,7 +134,7 @@ const Header = () => {
                 ...selectStyles
               }} />
             <button
-              className="main-link header__action login"
+              className="main-btn header__action login"
               onClick={openModal}
               style={{
                 color: value === 'default' ? '' : value === 'light' ? text : action

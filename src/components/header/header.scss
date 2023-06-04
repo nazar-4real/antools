@@ -73,6 +73,7 @@
 
     .login {
       padding: 12px 28px;
+      background: transparent;
     }
 
     .signup {
@@ -132,7 +133,7 @@
     @include insertFont(18px, 30px, 500);
     color: inherit;
     white-space: nowrap;
-    transition: color 0.3s;
+    transition: 0.3s;
 
     @media (width <= 991px) {
       @include insertFont(26px, 38px);
@@ -140,7 +141,7 @@
   }
 
   &__item:hover &__item-link {
-    color: $orange;
+    filter: brightness(.7);
   }
 
   &__item.with-submenu {
@@ -312,7 +313,7 @@
     padding: 0 30px;
 
     .login {
-      padding: 10px 25px;
+      background: transparent;
     }
 
     button {

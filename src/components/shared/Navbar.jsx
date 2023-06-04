@@ -110,7 +110,7 @@ const Navbar = () => {
   const mediaComponents = window.matchMedia('(max-width: 630px)').matches && (
     <li className="menu__item--actions">
       <button
-        className="main-link header__action login"
+        className="main-btn header__action login"
         onClick={openModal}
         style={{
           color: value === 'default' ? '' : action
