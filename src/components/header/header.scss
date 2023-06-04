@@ -114,15 +114,18 @@
         var(--gradient-col-2)
       );
       backdrop-filter: blur(50px);
+      padding: 18vh 0 10vh;
       flex-direction: column;
-      transition: all 0.8s;
-      clip-path: circle(0% at 100% 0%);
+      visibility: hidden;
+      transform: translateY(-100%);
+      transition: 0.8s;
+      will-change: transform;
     }
   }
 
   &.open .menu__list {
-    clip-path: circle(100%);
-    padding: 18vh 0 10vh;
+    visibility: visible;
+    transform: translateY(0);
   }
 
   &__item-link {
@@ -237,13 +240,14 @@
   }
 
   &-burger {
-    @include flexBox(flex-end, space-between);
-    flex-direction: column;
+    position: relative;
     width: 30px;
     height: 18px;
     cursor: pointer;
     display: none;
     z-index: 50;
+    transition: 0.5s;
+    will-change: height;
 
     @media (width <= 991px) {
       display: flex;
@@ -252,21 +256,51 @@
     span {
       width: 100%;
       height: 2px;
+      position: absolute;
+      right: 0;
       border-radius: 30%;
       background: $white;
-      transition: all 0.3s;
+      transition: 0.5s;
+      will-change: transform;
     }
 
     &:hover span {
       background: $orange;
     }
 
+    span:nth-child(1) {
+      top: 0;
+    }
+
     span:nth-child(2) {
+      top: 50%;
+      transform: translateY(-50%);
       width: 75%;
     }
 
     span:nth-child(3) {
+      bottom: 0;
       width: 50%;
+    }
+  }
+
+  &.open .menu-burger {
+    height: 30px;
+
+    span:nth-child(1) {
+      top: 50%;
+      transform: translateY(-50%) rotate(45deg);
+    }
+
+    span:nth-child(2) {
+      transform: translateX(10px);
+      opacity: 0;
+    }
+
+    span:nth-child(3) {
+      bottom: 50%;
+      width: 100%;
+      transform: translateY(50%) rotate(-45deg);
     }
   }
 

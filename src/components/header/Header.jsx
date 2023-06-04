@@ -110,7 +110,7 @@ const Header = () => {
       <div className="container">
         <div className="header__body">
           <Logo />
-          <nav className={`menu ${isMenuOpen ? 'open' : ''} `}>
+          <nav className={`menu ${isMenuOpen ? 'open' : ''} `.trim()}>
             <Navbar />
             <button className="menu-burger" onClick={handleMenu}>
               {Array.from({ length: 3 }, (_, i) => (
