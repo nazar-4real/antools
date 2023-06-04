@@ -1,0 +1,13 @@
+@mixin importFont($name, $nameWeight, $weight) {
+  @font-face {
+    font-family: $name;
+    src: url("../fonts/#{$name}-#{$nameWeight}.ttf") format("truetype");
+    font-weight: $weight;
+    font-display: swap;
+  }
+}
+
+@include importFont("Poppins", "Regular", 400);
+@include importFont("Poppins", "Medium", 500);
+@include importFont("Poppins", "SemiBold", 600);
+@include importFont("Roboto", "Regular", 400);

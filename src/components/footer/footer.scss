@@ -1,0 +1,96 @@
+@import "../../assets/styles/core/vars";
+@import "../../assets/styles/core/mixins";
+
+.footer {
+  padding: 70px 0 50px;
+  border-top: 1px solid rgba($white, 0.15);
+
+  &__columns {
+    @include flexBox(flex-start, space-between);
+    gap: 50px;
+
+    @media (width <= 991px) {
+      flex-wrap: wrap;
+    }
+  }
+
+  &__column {
+    @media (width <= 991px) {
+      width: 45%;
+    }
+
+    @media (width <= 610px) {
+      width: 100%;
+    }
+
+    &:first-child {
+      flex: 0 0 260px;
+      margin-right: auto;
+
+      @media (width <= 610px) {
+        flex-basis: 100%;
+      }
+    }
+
+    &-title {
+      @include insertFont(20px, 30px, 500);
+      margin-bottom: 20px;
+    }
+
+    &-nav-item + &-nav-item {
+      margin-top: 10px;
+    }
+
+    &-nav-link {
+      @include insertFont(16px, 24px, 500);
+      color: $opacityWhite;
+      transition: all 0.3s;
+    }
+
+    &-nav-link:hover {
+      color: $orange;
+    }
+  }
+
+  &__copy {
+    @include insertFont(16px, 24px, 500);
+    margin-top: 25px;
+
+    @media (width <= 768px) {
+      font-size: 18px;
+      line-height: 26px;
+    }
+  }
+
+  .main-text {
+    @include insertFont(14px, 25px);
+    margin-top: 21px;
+  }
+
+  .author {
+    margin-top: 70px;
+    text-align: center;
+    font-family: monospace;
+    font-size: 13px;
+    line-height: 21px;
+    font-style: normal;
+    color: $opacityWhite;
+
+    a {
+      color: rgba($orange, 0.5);
+      transition: all 0.3s;
+    }
+
+    a:hover {
+      color: $orange;
+    }
+  }
+
+  .developer {
+    @include insertFont(11px, 19px);
+    margin-top: 70px;
+    color: $white;
+    filter: opacity(.8);
+    text-align: right;
+  }
+}

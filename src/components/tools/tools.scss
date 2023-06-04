@@ -1,0 +1,48 @@
+@import "../../assets/styles/core/mixins";
+@import "../../assets/styles/core/vars";
+
+.tools {
+  &__info {
+    text-align: center;
+    margin-bottom: 90px;
+
+    .main-title {
+      margin-bottom: 25px;
+
+      @media (width <= 991px) {
+        margin-bottom: 15px;
+      }
+    }
+
+    .main-text {
+      max-width: 427px;
+      margin: 0 auto;
+    }
+  }
+
+  &__cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 75px 25px;
+
+    @media (width <= 1024px) {
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 30px;
+    }
+
+    @media (width <= 768px) {
+      grid-template-columns: 1fr;
+      grid-gap: 30px;
+    }
+  }
+
+  .main-btn.outlined {
+    display: block;
+    margin: 100px auto 0;
+    border: 1px solid rgba($white, 0.1);
+
+    @media (width <= 768px) {
+      margin-top: 50px;
+    }
+  }
+}

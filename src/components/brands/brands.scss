@@ -1,0 +1,63 @@
+@import "../../assets/styles/core/vars";
+@import "../../assets/styles/core/mixins";
+
+.brands {
+  @media (width <= 768px) {
+    padding: 50px 0;
+  }
+
+  &__body {
+    padding: 55px 82px;
+    background: rgba(44, 53, 61, 0.2);
+    backdrop-filter: blur(25px);
+    border-radius: 25px;
+    overflow: hidden;
+
+    @media (width <= 768px) {
+      padding: 50px;
+    }
+
+    &::before {
+      content: "";
+      width: 159px;
+      height: 159px;
+      background: rgba(255, 72, 66, 0.4);
+      filter: blur(50px);
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: translate(-65%, -65%);
+    }
+  }
+
+  .main-title {
+    @include insertFont(24px, 36px, 500);
+    text-align: center;
+    margin-bottom: 55px;
+  }
+
+  &__items {
+    @include flexBox(center, space-between);
+    gap: 30px;
+
+    @media (width <= 768px) {
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 30px 70px;
+    }
+  }
+
+  &__item {
+    max-width: 194px;
+
+    @media (width <= 768px) {
+      height: 70px;
+      max-width: 200px;
+    }
+  }
+
+  &__item img {
+    @include dimensions100;
+    object-fit: contain;
+  }
+}

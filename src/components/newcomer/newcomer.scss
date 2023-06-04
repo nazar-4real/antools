@@ -1,0 +1,57 @@
+@import "../../assets/styles/core/vars";
+@import "../../assets/styles/core/mixins";
+
+.newcomer {
+  &__body {
+    @include flexBox(flex-start, space-between);
+    gap: 40px;
+
+    @media (width <= 991px) {
+      flex-direction: column;
+      align-items: unset;
+      gap: 60px;
+    }
+  }
+
+  &__info {
+    max-width: 430px;
+    flex: 1 0;
+
+    .main-text {
+      margin-bottom: 60px;
+    }
+
+    @media (width <= 768px) {
+      .main-title {
+        margin-bottom: 15px;  
+      }
+
+      .main-text {
+        margin-bottom: 40px;
+      }
+    }
+  }
+
+  &__cards {
+    max-width: 600px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 50px 24px;
+
+    .tools__card-description.main-text {
+      @include insertFont(14px, 30px);
+    }
+
+    @media (width <= 768px) {
+      grid-template-columns: 1fr;
+      grid-gap: 40px 0;
+    }
+  }
+
+  @media (width <= 991px) {
+    &__info,
+    &__cards {
+      max-width: 100%;
+    }
+  }
+}

@@ -1,0 +1,477 @@
+@import "mixins";
+
+html {
+  min-height: 100%;
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  padding: 0;
+  margin: 0;
+  transition-property: color, background-color;
+  transition-duration: 0.3s;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  background: var(--scrollbarBg);
+
+  &-thumb {
+    background: var(--scrollbarThumb);
+    border-radius: 1px;
+  }
+}
+
+body {
+  font-family: $baseFont;
+  color: $white;
+  cursor: url("../images/cursors/default.cur"), default;
+}
+
+body,
+#root {
+  min-height: 100vmin;
+}
+
+#root {
+  @include flexBox();
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+a {
+  display: inline-block;
+  text-decoration: none;
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+button {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+img {
+  vertical-align: middle;
+}
+
+section {
+  padding: 100px 0;
+
+  @media (width <= 1024px) {
+    padding: 70px 0 50px;
+  }
+}
+
+.container {
+  width: min(calc(100% - 30px), $containerWidth);
+  margin: 0 auto;
+}
+
+.logo {
+  width: 140px;
+  height: 38px;
+
+  @media (width <= 768px) {
+    width: 125px;
+  }
+
+  svg {
+    @include dimensions100;
+  }
+}
+
+.main-btn {
+  @include insertFont(16px, 24px, 600);
+  color: $almostWhite;
+  background: $orange;
+  border-radius: 8px;
+  padding: 12px 28px;
+  border: 1px solid transparent;
+  transition: all 0.3s;
+  flex-shrink: 0;
+
+  @media (width <= 768px) {
+    padding: 8px 24px;
+  }
+
+  &:hover {
+    background: $deepBlue;
+    color: $orange;
+    border-color: transparent;
+  }
+
+  &.outlined {
+    border: 1px solid $opacityWhite;
+    background: transparent;
+    color: $orange;
+
+    &:hover {
+      border-color: transparent;
+      background: $orange;
+      color: $white;
+    }
+  }
+}
+
+.main-link {
+  @include insertFont(16px, 24px, 600);
+  color: $lighter;
+  transition: all 0.3s;
+
+  &:hover {
+    color: $orange;
+  }
+}
+
+.main-title {
+  @include insertFont(48px, 62px, 500);
+  color: $white;
+  margin-bottom: 30px;
+
+  @media (width <= 991px) {
+    font-size: 40px;
+    line-height: 52px;
+  }
+
+  @media (width <= 768px) {
+    font-size: 33px;
+    line-height: 44px;
+  }
+}
+
+.main-text {
+  @include insertFont(18px, 30px);
+  color: $opacityWhite;
+
+  @media (width <= 768px) {
+    font-size: 17px !important;
+    line-height: 30px !important;
+  }
+}
+
+.form {
+  max-width: 497px;
+  width: 100%;
+  position: relative;
+
+  &-label {
+    @include flexBox(center, space-between);
+    gap: 10px;
+    background: #283036;
+    border-radius: 15px;
+    width: 100%;
+    padding: 8px 11px;
+    transition: all 0.3s;
+  }
+
+  &-label:focus-within {
+    box-shadow: 0 0 10px -1px rgba($white, 0.4);
+  }
+
+  .search-icon {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+
+    @media (width <= 575px) {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  &-input {
+    @include insertFont(14px, 21px);
+    color: $opacityWhite;
+    caret-color: currentColor;
+    align-self: stretch;
+    width: 100%;
+    border: none;
+    background: transparent;
+    outline: none;
+
+    &::placeholder {
+      color: inherit;
+    }
+  }
+}
+
+// Modal
+
+.modal {
+  @include flexBox(center, center);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100%;
+  z-index: 50;
+  background: rgba($deepBlue, 0.98);
+  transition: all 0.8s;
+  transform: scale(0.5);
+  visibility: hidden;
+  opacity: 0;
+  border-radius: 150px;
+
+  &.show {
+    transform: scale(1);
+    visibility: visible;
+    opacity: 1;
+    border-radius: 0;
+  }
+
+  &-dialog {
+    width: min(580px, 70%);
+    height: min(350px, 55%);
+    position: relative;
+    padding: 20px;
+    background: $white;
+    color: $deepBlue;
+    transform: translateY(70px);
+    display: grid;
+    place-items: center;
+    grid-gap: 30px;
+    opacity: 0;
+    transition: all 0.8s;
+  }
+
+  span {
+    align-self: end;
+    font-size: 11px;
+  }
+
+  &.show &-dialog {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  &-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 30px;
+    height: 30px;
+    z-index: 5;
+
+    span {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 100%;
+      height: 2px;
+      background: $deepBlue;
+      border-radius: 50%;
+    }
+
+    span:nth-child(1) {
+      transform: translate(-50%, -50%) rotate(45deg);
+    }
+
+    span:nth-child(2) {
+      transform: translate(-50%, -50%) rotate(-45deg);
+    }
+  }
+}
+
+// Tools card
+
+.tools__card {
+  @include flexBox(flex-start, space-between);
+  flex-direction: column;
+  border-radius: 15px;
+  padding: 33px;
+  overflow: hidden;
+  position: relative;
+  min-height: 328px;
+  transition: all 0.3s;
+  animation: fade 0.3s linear;
+
+  @keyframes fade {
+    from {
+      opacity: 0;
+      transform: scale(0.8) rotate(15deg);
+    }
+
+    to {
+      opacity: 1;
+      transform: scale(1) rotate(0);
+    }
+  }
+
+  &:hover {
+    backdrop-filter: blur(25px);
+  }
+
+  @media (not (hover)) {
+    .main-link {
+      color: $white;
+      background: $orange;
+    }
+
+    &-action {
+      background: #283036;
+      box-shadow: 0px 5px 10px -3px rgba(18, 18, 18, 0.15);
+    }
+  }
+
+  & *:not(&-spot) {
+    transition: all 0.3s;
+  }
+
+  &-spot {
+    display: block;
+    width: 65px;
+    height: 65px;
+    background: rgba(255, 110, 48, 0.6);
+    filter: blur(25px);
+    border-radius: 50%;
+    text-align: center;
+    color: lime;
+    position: absolute;
+    z-index: -1;
+    transform: translate(-50%, -50%);
+  }
+
+  &-head {
+    @include flexBox(center, flex-start);
+    gap: 30px;
+    margin-bottom: 30px;
+
+    @media (width <= 575px) {
+      gap: 20px;
+    }
+  }
+
+  &-icon {
+    width: 64px;
+    height: 64px;
+    flex-shrink: 0;
+
+    @media (width <= 575px) {
+      width: 50px;
+      height: 50px;
+    }
+
+    &-img {
+      @include dimensions100;
+      object-fit: contain;
+    }
+  }
+
+  &-name {
+    @include insertFont(24px, 36px, 500);
+    color: $lighter;
+    margin-bottom: 5px;
+
+    @media (width <= 575px) {
+      font-size: 21px;
+      line-height: 30px;
+      margin-bottom: 3px;
+    }
+  }
+
+  &-status {
+    @include insertFont(18px, 27px);
+    color: rgba(255, 165, 55, 0.55);
+  }
+
+  &-description.main-text {
+    @include insertFont(16px, 30px);
+    margin-bottom: 30px;
+    height: 90px;
+    overflow: auto;
+    padding-right: 5px;
+
+    &::-webkit-scrollbar {
+      width: 2px;
+      background: var(--scrollbar);
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: var(--scrollbarThumb);
+      border-radius: 5px;
+    }
+  }
+
+  &-actions {
+    @include flexBox(center, space-between);
+    align-self: stretch;
+    gap: 12px;
+    margin-top: auto;
+  }
+
+  &-action {
+    @include flexBox(center, center);
+    flex-shrink: 0;
+    border-radius: 8px;
+    width: 42px;
+    height: 42px;
+    cursor: pointer;
+
+    input {
+      appearance: none;
+    }
+
+    svg {
+      width: 25px;
+      height: 21px;
+      object-fit: contain;
+    }
+
+    path {
+      transition: 0.7s;
+    }
+  }
+
+  .main-btn {
+    margin-left: auto;
+    padding: 9px 35px;
+    border-radius: 8px;
+    color: rgba($white, 0.5);
+    background: transparent;
+  }
+
+  &:hover & {
+    &-name {
+      color: $white;
+    }
+
+    &-action:hover,
+    &-action:has(input:checked) {
+      background: #283036;
+      box-shadow: 0px 5px 10px -3px rgba(18, 18, 18, 0.15);
+    }
+
+    &-actions .main-btn {
+      color: $white;
+      background: $orange;
+    }
+
+    &-actions .main-btn:hover {
+      color: $orange;
+      background: $deepBlue;
+    }
+  }
+
+  &-action input {
+    &:is(.liked, :hover) ~ .like-icon path {
+      fill: #dc143c;
+      fill-opacity: 1;
+    }
+
+    &:is(.attached, :hover) ~ .attach-icon path {
+      fill: #0091ff;
+      fill-opacity: 1;
+    }
+  }
+}
