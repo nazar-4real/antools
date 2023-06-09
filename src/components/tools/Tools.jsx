@@ -16,6 +16,7 @@ import github from 'src/assets/images/tools/github.svg'
 import gitlab from 'src/assets/images/tools/gitlab.svg'
 import invision from 'src/assets/images/tools/invision.svg'
 import kubernetes from 'src/assets/images/tools/kubernetes.svg'
+import nextjs from 'src/assets/images/tools/nextjs.svg'
 import nodejs from 'src/assets/images/tools/nodejs.svg'
 import notion from 'src/assets/images/tools/notion.svg'
 import npm from 'src/assets/images/tools/npm.svg'
@@ -25,6 +26,7 @@ import sketch from 'src/assets/images/tools/sketch.svg'
 import slack from 'src/assets/images/tools/slack.svg'
 import terminal from 'src/assets/images/tools/terminal.svg'
 import vsCode from 'src/assets/images/tools/vs-code.svg'
+import vercel from 'src/assets/images/tools/vercel.svg'
 
 import { DataService } from 'src/services/DataService'
 
@@ -49,7 +51,7 @@ const Tools = ({ onPropToggle }) => {
         text: 'Consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
         liked: false,
         attached: false,
-        url: '#'
+        url: 'https://www.sketch.com/'
       },
       {
         id: 3,
@@ -59,7 +61,7 @@ const Tools = ({ onPropToggle }) => {
         text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Consectetur adipiscing elit.',
         liked: false,
         attached: false,
-        url: '#'
+        url: 'https://code.visualstudio.com/'
       },
       {
         id: 4,
@@ -69,7 +71,7 @@ const Tools = ({ onPropToggle }) => {
         text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet.',
         liked: false,
         attached: false,
-        url: '#'
+        url: 'https://www.notion.so/'
       },
       {
         id: 5,
@@ -79,7 +81,7 @@ const Tools = ({ onPropToggle }) => {
         text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
         liked: false,
         attached: false,
-        url: '#'
+        url: 'https://slack.com/'
       },
       {
         id: 6,
@@ -89,7 +91,7 @@ const Tools = ({ onPropToggle }) => {
         text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, adipiscing elit.',
         liked: false,
         attached: false,
-        url: '#'
+        url: 'https://www.invisionapp.com/'
       },
       {
         id: 7,
@@ -99,7 +101,7 @@ const Tools = ({ onPropToggle }) => {
         text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Consectetur adipiscing elit.',
         liked: false,
         attached: false,
-        url: '#'
+        url: 'https://git-scm.com/'
       },
       {
         id: 8,
@@ -109,7 +111,7 @@ const Tools = ({ onPropToggle }) => {
         text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet.',
         liked: false,
         attached: false,
-        url: '#'
+        url: 'https://github.com/'
       },
       {
         id: 9,
@@ -119,7 +121,7 @@ const Tools = ({ onPropToggle }) => {
         text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
         liked: false,
         attached: false,
-        url: '#'
+        url: 'https://about.gitlab.com/'
       },
       {
         id: 10,
@@ -129,7 +131,7 @@ const Tools = ({ onPropToggle }) => {
         text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, adipiscing elit.',
         liked: false,
         attached: false,
-        url: '#'
+        url: 'https://nodejs.org/'
       },
       {
         id: 11,
@@ -139,7 +141,7 @@ const Tools = ({ onPropToggle }) => {
         text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Consectetur adipiscing elit.',
         liked: false,
         attached: false,
-        url: '#'
+        url: 'https://www.npmjs.com/'
       },
       {
         id: 12,
@@ -149,7 +151,7 @@ const Tools = ({ onPropToggle }) => {
         text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet.',
         liked: false,
         attached: false,
-        url: '#'
+        url: 'https://react.dev/'
       },
       {
         id: 13,
@@ -159,17 +161,17 @@ const Tools = ({ onPropToggle }) => {
         text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
         liked: false,
         attached: false,
-        url: '#'
+        url: 'https://sass-lang.com/'
       },
       {
         id: 14,
         icon: terminal,
-        name: 'Terminal',
+        name: 'Terminal(zsh)',
         status: 'Free',
         text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, adipiscing elit.',
         liked: false,
         attached: false,
-        url: '#'
+        url: 'https://ohmyz.sh/'
       },
       {
         id: 15,
@@ -179,7 +181,7 @@ const Tools = ({ onPropToggle }) => {
         text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, adipiscing elit.',
         liked: false,
         attached: false,
-        url: '#'
+        url: 'https://codepen.io/'
       },
       {
         id: 16,
@@ -189,7 +191,7 @@ const Tools = ({ onPropToggle }) => {
         text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, adipiscing elit.',
         liked: false,
         attached: false,
-        url: '#'
+        url: 'https://www.docker.com/'
       },
       {
         id: 17,
@@ -199,7 +201,27 @@ const Tools = ({ onPropToggle }) => {
         text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, adipiscing elit.',
         liked: false,
         attached: false,
-        url: '#'
+        url: 'https://kubernetes.io/'
+      },
+      {
+        id: 18,
+        icon: nextjs,
+        name: 'Next JS',
+        status: 'Free & Paid',
+        text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, adipiscing elit.',
+        liked: false,
+        attached: false,
+        url: 'https://nextjs.org/'
+      },
+      {
+        id: 19,
+        icon: vercel,
+        name: 'Vercel',
+        status: 'Free & Paid',
+        text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, adipiscing elit.',
+        liked: false,
+        attached: false,
+        url: 'https://vercel.com/'
       }
     ]
   )

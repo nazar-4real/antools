@@ -25,7 +25,7 @@ const Newcomer = ({ onPropToggle }) => {
       text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
       liked: false,
       attached: false,
-      url: '#'
+      url: 'https://zeplin.io/'
     },
     {
       id: 2,
@@ -35,7 +35,7 @@ const Newcomer = ({ onPropToggle }) => {
       text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
       liked: false,
       attached: false,
-      url: '#'
+      url: 'https://www.jetbrains.com/phpstorm/'
     },
     {
       id: 3,
@@ -45,7 +45,7 @@ const Newcomer = ({ onPropToggle }) => {
       text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
       liked: false,
       attached: false,
-      url: '#'
+      url: 'https://www.jetbrains.com/toolbox-app/'
     },
     {
       id: 4,
@@ -55,7 +55,7 @@ const Newcomer = ({ onPropToggle }) => {
       text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
       liked: false,
       attached: false,
-      url: '#'
+      url: 'https://procreate.com/'
     }
   ])
 
