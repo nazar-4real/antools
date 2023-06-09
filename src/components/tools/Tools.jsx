@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react'
 
+import { DataService } from 'src/services/DataService'
+
 import './tools.scss'
 
 import { Section } from '../shared/Section'
@@ -27,8 +29,6 @@ import slack from 'src/assets/images/tools/slack.svg'
 import terminal from 'src/assets/images/tools/terminal.svg'
 import vsCode from 'src/assets/images/tools/vs-code.svg'
 import vercel from 'src/assets/images/tools/vercel.svg'
-
-import { DataService } from 'src/services/DataService'
 
 const Tools = ({ onPropToggle }) => {
   const [toolsData, setToolsData] = useState(

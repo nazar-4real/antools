@@ -5,7 +5,6 @@ import { ModalContext } from 'src/context/ModalContext'
 
 import { ModalForm } from './ModalForm'
 
-
 const signinData = {
   className: "signin",
   title: "Sign In",
