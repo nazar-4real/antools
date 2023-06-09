@@ -4,6 +4,7 @@ import { ThemeContext } from 'src/context/ThemeStore'
 import { ModalContext } from 'src/context/ModalContext'
 
 import { Button } from './Button'
+import { ModalForm } from './ModalForm'
 
 const Modal = () => {
   const { theme: { value, colors: { action, background, text, auxiliary } } } = useContext(ThemeContext)
@@ -44,8 +45,6 @@ const Modal = () => {
   const signinScrollHeight = sigininRef.current?.scrollHeight
   const signupScrollHeight = siginupRef.current?.scrollHeight
 
-  console.log(signinScrollHeight, signupScrollHeight)
-
   return (
     <div
       className={`modal ${isModalOpen ? 'show' : ''}`.trim()}
@@ -75,43 +74,53 @@ const Modal = () => {
             '--inputCol': value === 'plum' ? `${action}aa` : `${text}aa`,
             height: `${Math.max(signinScrollHeight, signupScrollHeight)}px`
           }}>
-            <form className="modal__form signin" ref={sigininRef}>
-              <h2 className="main-title">
-                Sign In
-              </h2>
-              <label className="form-label">
-                <input className="form-input" type="email" name="email" placeholder="Your email or username" />
-              </label>
-              <label className="form-label">
-                <input className="form-input" type="password" name="password" placeholder="Your password" />
-              </label>
-              <Button type="submit">
-                Sign In
-              </Button>
-              <p className="form__footer main-text">
-                Don't have an account yet? <button className="switch-form" type="button" onClick={() => setVisibleForm('signup transition')} style={{ color: action }}>Sign Up</button>
-              </p>
-            </form>
-            <form className="modal__form signup" ref={siginupRef}>
-              <h2 className="main-title">
-                Sign Up
-              </h2>
-              <label className="form-label">
-                <input className="form-input" type="text" name="name" placeholder="Your name" />
-              </label>
-              <label className="form-label">
-                <input className="form-input" type="email" name="email" placeholder="Your email" />
-              </label>
-              <label className="form-label">
-                <input className="form-input" type="password" name="password" placeholder="Your password" />
-              </label>
-              <Button type="submit">
-                Sign Up
-              </Button>
-              <p className="form__footer main-text">
-                Already have an account? <button className="switch-form" type="button" onClick={() => setVisibleForm('signin transition')} style={{ color: action }}>Sign In</button>
-              </p>
-            </form>
+            <ModalForm
+              ref={sigininRef}
+              className="signin"
+              title="Sign In"
+              inputs={[
+                {
+                  type: 'email',
+                  name: 'name',
+                  placeholder: 'Your email or username'
+                },
+                {
+                  type: 'email',
+                  name: 'email',
+                  placeholder: 'Your password'
+                }
+              ]}
+              footerText={{
+                question: 'Don\'t have an account yet?',
+                formName: 'signup',
+                formSubmitText: 'Sign Up'
+              }} />
+            <ModalForm
+              ref={siginupRef}
+              className="signup"
+              title="Sign Up"
+              inputs={[
+                {
+                  type: 'text',
+                  name: 'name',
+                  placeholder: 'Your name'
+                },
+                {
+                  type: 'email',
+                  name: 'email',
+                  placeholder: 'Your email'
+                },
+                {
+                  type: 'password',
+                  name: 'password',
+                  placeholder: 'Your password'
+                }
+              ]}
+              footerText={{
+                question: 'Already have an account?',
+                formName: 'signin',
+                formSubmitText: 'Sign In'
+              }} />
           </div>
         </div>
       </div>
