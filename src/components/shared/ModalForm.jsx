@@ -5,12 +5,12 @@ import { ModalContext } from 'src/context/ModalContext'
 
 import { Button } from './Button'
 
-export const ModalForm = forwardRef((props, ref) => {
+export const ModalForm = forwardRef(({ formData }, ref) => {
   const { theme: { colors: { action } } } = useContext(ThemeContext)
 
   const { setVisibleForm } = useContext(ModalContext)
 
-  const { className, title, inputs, submitText = title, footerText } = props
+  const { className, title, inputs, submitText = title, footerText } = formData
 
   const formFields = inputs.map((item, idx) => {
     const { type, name, placeholder } = item

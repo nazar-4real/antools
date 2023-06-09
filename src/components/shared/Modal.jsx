@@ -3,13 +3,63 @@ import { useEffect, useRef, useContext } from 'react'
 import { ThemeContext } from 'src/context/ThemeStore'
 import { ModalContext } from 'src/context/ModalContext'
 
-import { Button } from './Button'
 import { ModalForm } from './ModalForm'
+
+
+const signinData = {
+  className: "signin",
+  title: "Sign In",
+  inputs: [
+    {
+      type: 'email',
+      name: 'name',
+      placeholder: 'Your email or username'
+    },
+    {
+      type: 'email',
+      name: 'email',
+      placeholder: 'Your password'
+    }
+  ],
+  footerText: {
+    question: 'Don\'t have an account yet?',
+    formName: 'signup',
+    formSubmitText: 'Sign Up'
+  }
+}
+
+const signupData = {
+  className: "signup",
+  title: "Sign Up",
+  inputs: [
+    {
+      type: 'text',
+      name: 'name',
+      placeholder: 'Your name'
+    },
+    {
+      type: 'email',
+      name: 'email',
+      placeholder: 'Your email'
+    },
+    {
+      type: 'password',
+      name: 'password',
+      placeholder: 'Your password'
+    }
+  ],
+  footerText: {
+    question: 'Already have an account?',
+    formName: 'signin',
+    formSubmitText: 'Sign In'
+  }
+}
+
 
 const Modal = () => {
   const { theme: { value, colors: { action, background, text, auxiliary } } } = useContext(ThemeContext)
 
-  const { isModalOpen, closeModal, visibleForm, setVisibleForm } = useContext(ModalContext)
+  const { isModalOpen, closeModal, visibleForm } = useContext(ModalContext)
 
   const htmlRef = useRef(document.documentElement)
   const bodyRef = useRef(document.body)
@@ -74,53 +124,8 @@ const Modal = () => {
             '--inputCol': value === 'plum' ? `${action}aa` : `${text}aa`,
             height: `${Math.max(signinScrollHeight, signupScrollHeight)}px`
           }}>
-            <ModalForm
-              ref={sigininRef}
-              className="signin"
-              title="Sign In"
-              inputs={[
-                {
-                  type: 'email',
-                  name: 'name',
-                  placeholder: 'Your email or username'
-                },
-                {
-                  type: 'email',
-                  name: 'email',
-                  placeholder: 'Your password'
-                }
-              ]}
-              footerText={{
-                question: 'Don\'t have an account yet?',
-                formName: 'signup',
-                formSubmitText: 'Sign Up'
-              }} />
-            <ModalForm
-              ref={siginupRef}
-              className="signup"
-              title="Sign Up"
-              inputs={[
-                {
-                  type: 'text',
-                  name: 'name',
-                  placeholder: 'Your name'
-                },
-                {
-                  type: 'email',
-                  name: 'email',
-                  placeholder: 'Your email'
-                },
-                {
-                  type: 'password',
-                  name: 'password',
-                  placeholder: 'Your password'
-                }
-              ]}
-              footerText={{
-                question: 'Already have an account?',
-                formName: 'signin',
-                formSubmitText: 'Sign In'
-              }} />
+            <ModalForm formData={signinData} ref={sigininRef} />
+            <ModalForm formData={signupData} ref={siginupRef} />
           </div>
         </div>
       </div>
