@@ -71,7 +71,7 @@ const Modal = () => {
         </button>
         <div className="modal__content">
           <div className={`modal__forms ${visibleForm}`.trim()} style={{
-            '--labelBg': background,
+            '--labelBg': value === 'default' ? auxiliary : background,
             '--inputCol': value === 'plum' ? `${action}aa` : `${text}aa`,
             height: `${Math.max(signinScrollHeight, signupScrollHeight)}px`
           }}>

@@ -39,7 +39,7 @@ const Tools = ({ onPropToggle }) => {
         text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
         liked: false,
         attached: false,
-        url: '#'
+        url: 'https://www.figma.com/'
       },
       {
         id: 2,
