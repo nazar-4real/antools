@@ -4,8 +4,12 @@ const ModalContext = createContext()
 
 const ModalProvider = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false)
+  const [visibleForm, setVisibleForm] = useState('');
 
-  const openModal = () => setIsOpen(true)
+  const openModal = (form) => {
+    setIsOpen(true)
+    setVisibleForm(form)
+  }
 
   const closeModal = () => setIsOpen(false)
 
@@ -14,7 +18,9 @@ const ModalProvider = ({ children }) => {
       value={{
         isModalOpen: isOpen,
         openModal: openModal,
-        closeModal: closeModal
+        closeModal: closeModal,
+        visibleForm: visibleForm,
+        setVisibleForm: setVisibleForm
       }}>
       {children}
     </ModalContext.Provider>

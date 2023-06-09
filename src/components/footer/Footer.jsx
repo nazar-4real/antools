@@ -127,7 +127,7 @@ const Footer = () => {
         <div className="developer" style={{
           color: value === 'light' && text
         }}>
-          Developed by <a href="#" style={{
+          Developed by <a href="https://github.com/nazar-4real" style={{
             color: action,
             fontWeight: 600,
             fontFamily: 'fantasy'

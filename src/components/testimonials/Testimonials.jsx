@@ -89,7 +89,7 @@ const Testimonials = () => {
       <Swiper
         className="testimonials__swiper"
         slidesPerView={1}
-        speed={1000}
+        speed={700}
         modules={[Pagination, Navigation]}
         spaceBetween={5}
         style={{
@@ -111,8 +111,7 @@ const Testimonials = () => {
           el: '.swiper-pagination',
           type: 'bullets',
           clickable: true
-        }}
-      >
+        }}>
         {testimonialsSlides}
         <div className="swiper-pagination"></div>
       </Swiper>

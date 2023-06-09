@@ -4,11 +4,11 @@ import { ThemeContext } from 'src/context/ThemeStore'
 
 import './hero.scss'
 
+import { Button } from '../shared/Button'
+import { Form } from '../shared/Form'
 import { Section } from '../shared/Section'
 import { Title } from '../shared/Title'
 import { Text } from '../shared/Text'
-import { Form } from '../shared/Form'
-import { Button } from '../shared/Button'
 
 import facebook from 'src/assets/images/social/facebook.svg'
 import instagram from 'src/assets/images/social/instagram.svg'
@@ -69,7 +69,7 @@ const Hero = () => {
         <Form
           className="hero__form"
           placeholder="find more than 430+ tools...">
-          <Button>
+          <Button className="hero__form-submit">
             Search
           </Button>
         </Form>

@@ -7,7 +7,7 @@ import { AttachIcon } from './AttachIcon'
 import { LikeIcon } from './LikeIcon'
 import { Button } from './Button'
 
-const ToolCard = ({ toolData, propHandler }) => {
+const   ToolCard = ({ toolData, propHandler }) => {
   const { theme: { value, colors: { action, auxiliary, background, text: textColor } } } = useContext(ThemeContext)
 
   const { id, icon, name, status, text, liked, attached, url } = toolData
@@ -104,7 +104,7 @@ const ToolCard = ({ toolData, propHandler }) => {
           Visit
         </Button>
       </div>
-    </div >
+    </div>
   )
 }
 

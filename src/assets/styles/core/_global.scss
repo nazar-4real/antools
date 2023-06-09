@@ -110,15 +110,9 @@ section {
   }
 
   &.outlined {
-    border: 1px solid $opacityWhite;
+    border: 1px solid var(--outlineCol);
     background: transparent;
     color: $orange;
-
-    &:hover {
-      border-color: transparent;
-      background: $orange;
-      color: $white;
-    }
   }
 }
 
@@ -143,8 +137,8 @@ section {
   color: $opacityWhite;
 
   @media (width <= 768px) {
-    font-size: 17px !important;
-    line-height: 30px !important;
+    font-size: 17px;
+    line-height: 30px;
   }
 }
 
@@ -156,7 +150,7 @@ section {
   &-label {
     @include flexBox(center, space-between);
     gap: 10px;
-    background: #283036;
+    background: var(--labelBg);
     border-radius: 15px;
     width: 100%;
     padding: 8px 11px 8px 21px;
@@ -164,7 +158,7 @@ section {
   }
 
   &-label:focus-within {
-    box-shadow: 0 0 10px -1px rgba($white, 0.4);
+    box-shadow: 0 0 5px 0px rgba(255, 255, 255, 0.4);
   }
 
   .search-icon {
@@ -180,7 +174,7 @@ section {
 
   &-input {
     @include insertFont(14px, 21px);
-    color: $opacityWhite;
+    color: var(--inputCol);
     caret-color: currentColor;
     align-self: stretch;
     width: 100%;
@@ -209,7 +203,7 @@ section {
   transform: scale(0.5);
   visibility: hidden;
   opacity: 0;
-  border-radius: 150px;
+  border-radius: 50px;
 
   &.show {
     transform: scale(1);
@@ -220,10 +214,7 @@ section {
 
   &-dialog {
     width: min(580px, 90%);
-    height: min(350px, 55%);
     position: relative;
-    padding: 20px;
-    background: $white;
     color: $deepBlue;
     transform: translateY(70px);
     display: grid;
@@ -231,6 +222,7 @@ section {
     grid-gap: 30px;
     opacity: 0;
     transition: all 0.8s;
+    border-radius: 5px;
   }
 
   span {
@@ -267,6 +259,89 @@ section {
 
     span:nth-child(2) {
       transform: translate(-50%, -50%) rotate(-45deg);
+    }
+  }
+
+  &__content {
+    @include dimensions100;
+    padding: 45px;
+
+    @media (width <= 575px) {
+      padding: 40px 20px 30px;
+    }
+  }
+
+  &__forms {
+    position: relative;
+    width: 100%;
+
+    &.signin {
+      .signin {
+        transform: rotateY(0);
+      }
+
+      .signup {
+        transform: rotateY(-0.5turn);
+      }
+    }
+
+    &.signup {
+      .signin {
+        transform: rotateY(0.5turn);
+      }
+
+      .signup {
+        transform: rotateY(0);
+      }
+    }
+
+    &.transition :is(.signin, .signup) {
+      transition: 1s;
+    }
+  }
+
+  &__form {
+    @include flexBox(stretch, flex-start);
+    flex-direction: column;
+    backface-visibility: hidden;
+    position: absolute;
+    inset: 0;
+    background: inherit;
+    border-radius: 5px;
+
+    &.signup {
+      transform: translateZ(50px) rotateY(0.5turn);
+    }
+
+    .main-title {
+      font-size: 30px;
+      line-height: 39px;
+    }
+
+    .form-label {
+      border-radius: 5px;
+      margin-bottom: 20px;
+      padding: 15px 20px;
+    }
+
+    .main-btn {
+      align-self: center;
+      margin: auto 0 30px;
+      padding: 10px 25px;
+    }
+
+    .main-btn:hover {
+      transform: scale(1.05);
+    }
+
+    .form__footer {
+      font-size: 12px;
+      text-align: center;
+    }
+
+    .switch-form {
+      font-family: inherit;
+      font-size: inherit;
     }
   }
 }

@@ -6,8 +6,8 @@ import { ModalContext } from 'src/context/ModalContext'
 
 import './header.scss'
 
-import { Navbar } from '../shared/Navbar'
 import { Button } from '../shared/Button'
+import { Navbar } from '../shared/Navbar'
 import { Logo } from '../shared/Logo'
 
 const selectStyles = {
@@ -68,7 +68,7 @@ const selectStyles = {
 }
 
 const Header = () => {
-  const { switchTheme, themeOptions, theme, theme: { value, colors: { background, action, auxiliary, text } } } = useContext(ThemeContext)
+  const { switchTheme, themeOptions, theme, theme: { value, colors: { action, auxiliary, background, text } } } = useContext(ThemeContext)
 
   const { openModal } = useContext(ModalContext)
 
@@ -133,17 +133,18 @@ const Header = () => {
                 '--optionBg': action,
                 ...selectStyles
               }} />
-            <button
-              className="main-btn header__action login"
-              onClick={openModal}
+            <Button
+              className="header__action login"
+              onClick={() => openModal('signin')}
               style={{
-                color: value === 'default' ? '' : value === 'light' ? text : action
+                background: 'transparent',
+                color: (value === 'default' || value === 'light') ? text : action
               }}>
               Login
-            </button>
+            </Button>
             <Button
               className="header__action signup"
-              onClick={openModal}>
+              onClick={() => openModal('signup')}>
               Sign Up
             </Button>
           </div>

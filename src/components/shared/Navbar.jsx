@@ -103,23 +103,24 @@ const Navbar = () => {
             </ul>
           )
         }
-      </li >
+      </li>
     )
   })
 
   const mediaComponents = window.matchMedia('(max-width: 630px)').matches && (
     <li className="menu__item--actions">
-      <button
-        className="main-btn header__action login"
-        onClick={openModal}
+      <Button
+        className="header__action login"
+        onClick={() => openModal('signin')}
         style={{
-          color: value === 'default' ? '' : action
+          background: 'transparent',
+          color: (value === 'default' || value === 'light') ? text : action
         }}>
         Login
-      </button>
+      </Button>
       <Button
         className="header__action signup"
-        onClick={openModal}>
+        onClick={() => openModal('signup')}>
         Sign Up
       </Button>
     </li>

@@ -6,7 +6,7 @@ const ThemeContext = createContext()
 const themeColors = {
   default: {
     background: '#1e252b',
-    text: '#fff',
+    text: '#ffffff',
     action: '#ff6e30',
     auxiliary: 'rgba(40, 48, 54, 0.6)'
   },
@@ -48,7 +48,7 @@ const themeColors = {
   },
   lime: {
     background: '#222629',
-    text: '#fff',
+    text: '#ffffff',
     action: '#79aa3b',
     auxiliary: '#474b4f'
   }
