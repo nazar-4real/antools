@@ -71,27 +71,21 @@ const footerColsData = [
 const Footer = () => {
   const { theme: { value, colors: { action, text } } } = useContext(ThemeContext)
 
-  const footerNavCols = footerColsData.map(item => {
-    const { id: colId, title, nav } = item
-
-    const colNavLink = nav ? nav.map(col => {
-      const { id: linkId, url, name } = col
-
-      return (
-        <li
-          className="footer__column-nav-item"
-          key={linkId}>
-          <a
-            className="footer__column-nav-link"
-            href={url}
-            style={{
-              color: value === 'plum' ? '#fff' : text
-            }}>
-            {name}
-          </a>
-        </li>
-      )
-    }) : <span className="main-text">The list is still empty</span>
+  const footerNavCols = footerColsData.map(({ id: colId, title, nav }) => {
+    const colNavLink = nav ? nav.map(({ id: linkId, url, name }) => (
+      <li
+        className="footer__column-nav-item"
+        key={linkId}>
+        <a
+          className="footer__column-nav-link"
+          href={url}
+          style={{
+            color: value === 'plum' ? '#fff' : text
+          }}>
+          {name}
+        </a>
+      </li>
+    )) : <span className="main-text">The list is still empty</span>
 
     return (
       <div className="footer__column" key={colId}>
@@ -106,7 +100,9 @@ const Footer = () => {
   })
 
   return (
-    <footer className="footer">
+    <footer className="footer" style={{
+      '--borderCol': value === 'default' ? `${text}33` : `${action}33`
+    }}>
       <div className="container">
         <div className="footer__body">
           <div className="footer__columns">

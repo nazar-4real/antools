@@ -24,45 +24,47 @@ const selectStyles = {
     ...baseStyles,
     margin: 0
   }),
-  indicatorsContainer: (_, { selectProps: { value: { colors: { action } } } }) => {
+  indicatorsContainer: (_, { selectProps: { menuIsOpen, value: { colors: { action } } } }) => {
     return {
       '[class$="Container"]': {
         padding: 0,
         marginLeft: '8px',
-        color: action
-      },
-      '[class$="Container"]:hover': {
-        color: '#fff'
+        color: action,
+        transition: '.3s',
+        transform: menuIsOpen && 'rotate(-90deg)'
       }
     }
   },
-  menu: (baseStyles, { selectProps: { styles } }) => ({
+  menu: (baseStyles, { selectProps: { styles, value: { colors: { text } } } }) => ({
     ...baseStyles,
     '--optionBg': styles['--optionBg'],
     top: '115%',
-    background: '#1e252b',
     boxShadow: 'none',
     borderRadius: '10px',
-    border: '1px solid #fff',
+    border: `1px solid ${text}`,
     overflow: 'hidden',
     margin: '0 0 0 -21px',
     minWidth: '110px'
   }),
   menuList: () => ({
     padding: 0,
-    height: '201px',
-    overflowY: 'auto'
+    height: '199px',
+    overflowY: 'auto',
+    overscrollBehavior: 'contain',
+    '&::-webkit-scrollbar': {
+      width: '3px'
+    }
   }),
-  option: (_, state) => ({
+  option: (_, { isSelected, selectProps: { value: { value, colors: { auxiliary, background, text } } } }) => ({
     padding: '12px 20px',
     cursor: 'pointer',
     transition: 'all .3s',
-    background: state.isSelected ? 'var(--optionBg)' : '',
+    background: isSelected ? 'var(--optionBg)' : value === 'default' ? background : auxiliary,
     '&:hover': {
       background: 'var(--optionBg)'
     },
     '&:not(:first-of-type)': {
-      border: '1px solid #fff'
+      borderTop: `1px solid ${text}`
     },
   })
 }

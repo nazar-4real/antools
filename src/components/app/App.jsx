@@ -15,8 +15,6 @@ import Footer from '../footer/Footer'
 
 import Modal from '../shared/Modal'
 
-import { Button } from '../shared/Button'
-
 const App = () => {
   const { theme: { colors: { action, auxiliary, background } } } = useContext(ThemeContext)
 
@@ -24,7 +22,7 @@ const App = () => {
 
   useEffect(() => {
     bodyRef.current.style.cssText += `
-      --scrollbar: ${auxiliary};
+      --scrollbarBg: ${auxiliary};
       --scrollbarThumb: ${action};
       background: ${background};
     `

@@ -3,7 +3,7 @@
 
 .footer {
   padding: 70px 0 50px;
-  border-top: 1px solid rgba($white, 0.15);
+  border-top: 1px solid var(--borderCol);
 
   &__columns {
     @include flexBox(flex-start, space-between);
@@ -43,7 +43,6 @@
 
     &-nav-link {
       @include insertFont(16px, 24px, 500);
-      color: $opacityWhite;
       transition: all 0.3s;
     }
 
@@ -67,30 +66,11 @@
     margin-top: 21px;
   }
 
-  .author {
-    margin-top: 70px;
-    text-align: center;
-    font-family: monospace;
-    font-size: 13px;
-    line-height: 21px;
-    font-style: normal;
-    color: $opacityWhite;
-
-    a {
-      color: rgba($orange, 0.5);
-      transition: all 0.3s;
-    }
-
-    a:hover {
-      color: $orange;
-    }
-  }
-
   .developer {
     @include insertFont(11px, 19px);
     margin-top: 70px;
     color: $white;
-    filter: opacity(.8);
+    filter: opacity(0.8);
     text-align: right;
   }
 }

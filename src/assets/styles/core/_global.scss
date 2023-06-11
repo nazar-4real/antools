@@ -93,8 +93,6 @@ section {
 
 .main-btn {
   @include insertFont(16px, 24px, 600);
-  color: $almostWhite;
-  background: $orange;
   border-radius: 8px;
   padding: 12px 28px;
   border: 1px solid transparent;
@@ -110,9 +108,7 @@ section {
   }
 
   &.outlined {
-    border: 1px solid var(--outlineCol);
-    background: transparent;
-    color: $orange;
+    border-color: var(--outlineCol);
   }
 }
 
@@ -134,7 +130,6 @@ section {
 
 .main-text {
   @include insertFont(18px, 30px);
-  color: $opacityWhite;
 
   @media (width <= 768px) {
     font-size: 17px;
@@ -198,7 +193,6 @@ section {
   width: 100vw;
   height: 100%;
   z-index: 50;
-  background: rgba($deepBlue, 0.98);
   transition: all 0.8s;
   transform: scale(0.5);
   visibility: hidden;
@@ -215,7 +209,6 @@ section {
   &-dialog {
     width: min(580px, 90%);
     position: relative;
-    color: $deepBlue;
     transform: translateY(70px);
     display: grid;
     place-items: center;
@@ -249,7 +242,6 @@ section {
       left: 50%;
       width: 100%;
       height: 2px;
-      background: $deepBlue;
       border-radius: 50%;
     }
 
@@ -428,7 +420,6 @@ section {
 
   &-name {
     @include insertFont(24px, 36px, 500);
-    color: $lighter;
     margin-bottom: 5px;
 
     @media (width <= 575px) {
@@ -440,7 +431,6 @@ section {
 
   &-status {
     @include insertFont(18px, 27px);
-    color: rgba(255, 165, 55, 0.55);
   }
 
   &-description.main-text {
@@ -495,8 +485,6 @@ section {
     margin-left: auto;
     padding: 9px 35px;
     border-radius: 8px;
-    color: rgba($white, 0.5);
-    background: transparent;
   }
 
   &:hover & {

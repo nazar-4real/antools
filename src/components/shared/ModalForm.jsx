@@ -6,7 +6,7 @@ import { ModalContext } from 'src/context/ModalContext'
 import { Button } from './Button'
 
 export const ModalForm = forwardRef(({ formData }, ref) => {
-  const { theme: { colors: { action } } } = useContext(ThemeContext)
+  const { theme: { colors: { action, text } } } = useContext(ThemeContext)
 
   const { setVisibleForm } = useContext(ModalContext)
 
@@ -37,8 +37,8 @@ export const ModalForm = forwardRef(({ formData }, ref) => {
       <Button type="submit">
         {submitText}
       </Button>
-      <p className="form__footer main-text">
-        {question} <button className="switch-form" type="button" onClick={() => setVisibleForm(`${formName} transition`)} style={{ color: action }}>{formSubmitText}</button>
+      <p className="form__footer main-text" style={{ color: `${text}aa` }}>
+        {question} <button className="switch-form" type="button" onClick={() => setVisibleForm(`${formName} transition`)} style={{ color: action, borderBottom: '1px solid currentColor', marginLeft: '3px' }}>{formSubmitText}</button>
       </p>
     </form>
   )

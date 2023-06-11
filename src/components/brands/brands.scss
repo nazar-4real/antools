@@ -8,7 +8,6 @@
 
   &__body {
     padding: 55px 82px;
-    background: rgba(44, 53, 61, 0.2);
     backdrop-filter: blur(25px);
     border-radius: 25px;
     overflow: hidden;
@@ -21,7 +20,7 @@
       content: "";
       width: 159px;
       height: 159px;
-      background: rgba(255, 72, 66, 0.4);
+      background: var(--spotCol);
       filter: blur(50px);
       position: absolute;
       top: 0;
@@ -56,7 +55,7 @@
     }
   }
 
-  &__item img {
+  &__item-img {
     @include dimensions100;
     object-fit: contain;
   }

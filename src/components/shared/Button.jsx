@@ -10,8 +10,8 @@ export const Button = ({ className = '', onClick = null, children, ...attrs }) =
       className={`main-btn ${className}`.trim()}
       onClick={onClick}
       style={{
-        background: value !== 'default' && action,
-        color: value === 'brown' ? background : value !== 'default' && text,
+        background: action,
+        color: value === 'brown' ? background : text,
         ...(className.split(' ').includes('outlined') && {
           '--outlineCol': `${action}99`,
           background: 'transparent',
