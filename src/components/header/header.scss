@@ -117,10 +117,12 @@
       backdrop-filter: blur(50px);
       padding: 18vh 0 10vh;
       flex-direction: column;
+      justify-content: unset;
       visibility: hidden;
       transform: translateY(-100%);
       transition: 0.8s;
       will-change: transform;
+      overflow-y: auto;
     }
   }
 
@@ -141,37 +143,35 @@
   }
 
   &__item:hover &__item-link {
-    filter: brightness(.7);
+    filter: brightness(0.7);
   }
 
   &__item.with-submenu {
     position: relative;
-    padding-right: 20px;
-    z-index: 10;
-
-    &::after {
-      content: "";
-      position: absolute;
-      top: 45%;
-      right: 0;
-      transform: translateY(-50%) rotate(45deg);
-      width: 10px;
-      height: 10px;
-      border-right: 3px solid currentColor;
-      border-bottom: 3px solid currentColor;
-      border-radius: 2px;
-      transition: all 0.3s;
-    }
-
-    &:hover::after {
-      border-color: var(--arrowColor);
-      top: 50%;
-      transform: translateY(-50%) rotate(-45deg);
-    }
 
     .menu__item-link {
       cursor: default;
       pointer-events: none;
+      position: relative;
+      padding-right: 20px;
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        right: 0;
+        transform: translateY(-50%) rotate(45deg);
+        width: 10px;
+        height: 10px;
+        border-right: 3px solid var(--arrowColor);
+        border-bottom: 3px solid var(--arrowColor);
+        border-radius: 2px;
+        transition: all 0.3s;
+      }
+    }
+
+    &:hover .menu__item-link::after {
+      transform: translateY(-50%) rotate(-45deg);
     }
   }
 
@@ -179,22 +179,23 @@
     min-width: 180px;
     border: 1px solid $white;
     position: absolute;
-    z-index: -1;
+    z-index: 2;
     top: 100%;
-    left: 0;
+    left: 50%;
     background: $deepBlue;
-    border-radius: 10px;
+    border-radius: 5px;
+    transform: translate(-50%, 10px);
     margin-top: 10px;
-    transform: translateY(50px);
     opacity: 0;
     visibility: hidden;
     transition: all 0.3s;
     transition-delay: 0.3s;
-    overflow: hidden;
+    overflow: hidden auto;
+    height: 253px;
+    overscroll-behavior-y: contain;
 
     @media (width <= 991px) {
       left: 50%;
-      transform: translate(-50%, 50px);
     }
   }
 
@@ -311,7 +312,7 @@
     margin-top: auto;
     width: 100%;
     padding: 0 30px;
-    
+
     button {
       flex: 1;
     }
