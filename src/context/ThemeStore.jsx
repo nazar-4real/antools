@@ -24,7 +24,7 @@ const themeColors = {
   },
   plum: {
     background: '#232946',
-    text: '#121629',
+    text: '#dac5cb',
     action: '#eebbc3',
     auxiliary: '#121629'
   },

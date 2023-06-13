@@ -134,7 +134,7 @@
   }
 
   &__item:hover &__item-link {
-    filter: brightness(0.7);
+    filter: brightness(0.8);
   }
 
   &__item.with-submenu {
@@ -168,12 +168,11 @@
 
   &__item-submenu {
     min-width: 100%;
-    border: 1px solid $white;
+    border: 1px solid var(--borderCol);
     position: absolute;
     z-index: 2;
     top: 100%;
     left: 50%;
-    background: $deepBlue;
     border-radius: 5px;
     transform: translate(-50%, 10px);
     margin-top: 10px;
@@ -204,7 +203,7 @@
   }
 
   &-item__submenu-item + &-item__submenu-item {
-    border-top: 1px solid $white;
+    border-top: 1px solid var(--borderCol);
   }
 
   &-item__submenu-link {

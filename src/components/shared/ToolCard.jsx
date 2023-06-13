@@ -7,7 +7,7 @@ import { AttachIcon } from './AttachIcon'
 import { LikeIcon } from './LikeIcon'
 import { Button } from './Button'
 
-const   ToolCard = ({ toolData, propHandler }) => {
+const ToolCard = ({ toolData, propHandler }) => {
   const { theme: { value, colors: { action, auxiliary, background, text: textColor } } } = useContext(ThemeContext)
 
   const { id, icon, name, status, text, liked, attached, url } = toolData
@@ -46,7 +46,8 @@ const   ToolCard = ({ toolData, propHandler }) => {
         background: auxiliary
       }}>
       {visible && (
-        <b className="tools__card-spot"
+        <b
+          className="tools__card-spot"
           style={{
             top: `${mousePos.posY}px`,
             left: `${mousePos.posX}px`,
@@ -61,13 +62,15 @@ const   ToolCard = ({ toolData, propHandler }) => {
             alt={name} />
         </div>
         <div className="tools__card-caption">
-          <h5 className="tools__card-name"
+          <h5
+            className="tools__card-name"
             style={{
-              color: value === 'plum' || value === 'default' ? '#fff' : textColor
+              color: ['default', 'plum'].includes(value) ? '#fff' : textColor
             }}>
             {name}
           </h5>
-          <p className="tools__card-status"
+          <p
+            className="tools__card-status"
             style={{
               color: value === 'light' ? `${textColor}cc` : `${action}cc`
             }}>
@@ -75,8 +78,7 @@ const   ToolCard = ({ toolData, propHandler }) => {
           </p>
         </div>
       </div>
-      <Text
-        className="tools__card-description">
+      <Text className="tools__card-description">
         {text}
       </Text>
       <div className="tools__card-actions">

@@ -39,7 +39,9 @@ const Brands = () => {
   const { theme: { value, colors: { action, text } } } = useContext(ThemeContext)
 
   const brands = brandsData.map(({ id, icon, name }) => (
-    <div className="brands__item" key={id}>
+    <div
+      className="brands__item"
+      key={id}>
       <img
         className="brands__item-img"
         src={icon}
@@ -51,9 +53,11 @@ const Brands = () => {
   ))
 
   return (
-    <Section className="brands" style={{
-      '--spotCol': `${action}88`
-    }}>
+    <Section
+      className="brands"
+      style={{
+        '--spotCol': `${action}88`
+      }}>
       <Title style={{ color: value === 'light' && text }}>
         Trusted more than 150+ brand
       </Title>

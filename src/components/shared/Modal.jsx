@@ -5,55 +5,55 @@ import { ModalContext } from 'src/context/ModalContext'
 
 import { ModalForm } from './ModalForm'
 
-const signinData = {
-  className: "signin",
-  title: "Sign In",
-  inputs: [
-    {
-      type: 'email',
-      name: 'name',
-      placeholder: 'Your email or username'
-    },
-    {
-      type: 'email',
-      name: 'email',
-      placeholder: 'Your password'
+const formPlaceholder = {
+  signinPlaceholder: {
+    className: "signin",
+    title: "Sign In",
+    inputs: [
+      {
+        type: 'email',
+        name: 'name',
+        placeholder: 'Your email or username'
+      },
+      {
+        type: 'email',
+        name: 'email',
+        placeholder: 'Your password'
+      }
+    ],
+    footerText: {
+      question: 'Don\'t have an account yet?',
+      formName: 'signup',
+      formSubmitText: 'Sign Up'
     }
-  ],
-  footerText: {
-    question: 'Don\'t have an account yet?',
-    formName: 'signup',
-    formSubmitText: 'Sign Up'
+  },
+  signupPlaceholer: {
+    className: "signup",
+    title: "Sign Up",
+    inputs: [
+      {
+        type: 'text',
+        name: 'name',
+        placeholder: 'Your name'
+      },
+      {
+        type: 'email',
+        name: 'email',
+        placeholder: 'Your email'
+      },
+      {
+        type: 'password',
+        name: 'password',
+        placeholder: 'Your password'
+      }
+    ],
+    footerText: {
+      question: 'Already have an account?',
+      formName: 'signin',
+      formSubmitText: 'Sign In'
+    }
   }
 }
-
-const signupData = {
-  className: "signup",
-  title: "Sign Up",
-  inputs: [
-    {
-      type: 'text',
-      name: 'name',
-      placeholder: 'Your name'
-    },
-    {
-      type: 'email',
-      name: 'email',
-      placeholder: 'Your email'
-    },
-    {
-      type: 'password',
-      name: 'password',
-      placeholder: 'Your password'
-    }
-  ],
-  footerText: {
-    question: 'Already have an account?',
-    formName: 'signin',
-    formSubmitText: 'Sign In'
-  }
-}
-
 
 const Modal = () => {
   const { theme: { value, colors: { action, background, text, auxiliary } } } = useContext(ThemeContext)
@@ -102,13 +102,16 @@ const Modal = () => {
         background: background,
         boxShadow: `inset 0 0 25px -15px ${action}`
       }}>
-      <div className="modal-dialog"
+      <div
+        className="modal-dialog"
         style={{
-          background: value === 'light' ? `${text}ee` : auxiliary,
+          background: auxiliary,
           color: action,
           border: `1px solid ${action}55`
         }}>
-        <button className="modal-close" onClick={closeModal}>
+        <button
+          className="modal-close"
+          onClick={closeModal}>
           {Array.from({ length: 2 }, (_, idx) => (
             <span
               key={idx}
@@ -118,13 +121,19 @@ const Modal = () => {
           ))}
         </button>
         <div className="modal__content">
-          <div className={`modal__forms ${visibleForm}`.trim()} style={{
-            '--labelBg': value === 'default' ? auxiliary : background,
-            '--inputCol': value === 'plum' ? `${action}aa` : `${text}aa`,
-            height: `${Math.max(signinScrollHeight, signupScrollHeight)}px`
-          }}>
-            <ModalForm formData={signinData} ref={sigininRef} />
-            <ModalForm formData={signupData} ref={siginupRef} />
+          <div
+            className={`modal__forms ${visibleForm}`.trim()}
+            style={{
+              '--labelBg': value === 'default' ? auxiliary : background,
+              '--inputCol': value === 'plum' ? `${action}aa` : `${text}aa`,
+              height: `${Math.max(signinScrollHeight, signupScrollHeight)}px`
+            }}>
+            <ModalForm
+              formPlaceholder={formPlaceholder.signinPlaceholder}
+              ref={sigininRef} />
+            <ModalForm
+              formPlaceholder={formPlaceholder.signupPlaceholer}
+              ref={siginupRef} />
           </div>
         </div>
       </div>

@@ -6,9 +6,9 @@ export const Text = ({ className = '', children, ...props }) => {
   const { theme: { value, colors: { text } } } = useContext(ThemeContext)
 
   return (
-    <p className={`main-text ${className.trim()}`}
+    <p className={`main-text ${className}`.trim()}
       style={{
-        color: value === 'plum' || value === 'default' ? 'rgba(255, 255, 255, 0.5)' : text
+        color: value === 'default' ? '#ffffff88' : text
       }}
       {...props}>
       {children}

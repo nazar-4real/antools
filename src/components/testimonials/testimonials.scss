@@ -1,3 +1,4 @@
+@use "sass:color";
 @import "../../assets/styles/core/vars";
 @import "../../assets/styles/core/mixins";
 
@@ -86,11 +87,12 @@
       right: 0;
       bottom: 0;
       transform: translate(50%, 50%);
-      background: rgba(#007acc, 0.3);
-      box-shadow: 0 0 40px 1px #007acc;
+      background: var(--circleCol);
+      box-shadow: 0 0 30px 20px var(--circleCol);
       filter: blur(2.5px);
       border-radius: 50%;
       z-index: -1;
+      opacity: .3;
     }
 
     &-info {

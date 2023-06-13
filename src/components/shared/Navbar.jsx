@@ -51,7 +51,7 @@ const navData = [
 ]
 
 const Navbar = () => {
-  const { theme: { value, colors: { action, auxiliary, text } } } = useContext(ThemeContext)
+  const { theme: { value, colors: { action, auxiliary, background, text } } } = useContext(ThemeContext)
 
   const { openModal } = useContext(ModalContext)
 
@@ -98,7 +98,12 @@ const Navbar = () => {
         </a>
         {
           submenuArr && (
-            <ul className="menu__item-submenu">
+            <ul
+              className="menu__item-submenu"
+              style={{
+                '--borderCol': `${text}88`,
+                background: background
+              }}>
               {submenu}
             </ul>
           )
@@ -128,12 +133,13 @@ const Navbar = () => {
 
   return (
     <ul className="menu__list"
-      style={window.matchMedia('(max-width: 991px)').matches
-        ? {
-          '--gradient-col-1': `${action}55`,
-          '--gradient-col-2': value !== 'default' ? `${auxiliary}55` : auxiliary
-        }
-        : {}}>
+      style={
+        window.matchMedia('(max-width: 991px)').matches
+          ? {
+            '--gradient-col-1': `${action}55`,
+            '--gradient-col-2': value !== 'default' ? `${auxiliary}55` : auxiliary
+          }
+          : {}}>
       {renderMenu}
       {mediaComponents}
     </ul>

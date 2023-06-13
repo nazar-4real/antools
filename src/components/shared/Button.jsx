@@ -11,7 +11,7 @@ export const Button = ({ className = '', onClick = null, children, ...attrs }) =
       onClick={onClick}
       style={{
         background: action,
-        color: value === 'brown' ? background : text,
+        color: ['brown', 'plum'].includes(value) ? background : text,
         ...(className.split(' ').includes('outlined') && {
           '--outlineCol': `${action}99`,
           background: 'transparent',

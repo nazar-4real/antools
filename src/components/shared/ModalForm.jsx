@@ -4,24 +4,29 @@ import { ThemeContext } from 'src/context/ThemeStore'
 import { ModalContext } from 'src/context/ModalContext'
 
 import { Button } from './Button'
+import { Title } from './Title'
+import { Text } from './Text'
 
-export const ModalForm = forwardRef(({ formData }, ref) => {
-  const { theme: { colors: { action, text } } } = useContext(ThemeContext)
+export const ModalForm = forwardRef(({ formPlaceholder }, ref) => {
+  const { theme: { value, colors: { action, auxiliary, text } } } = useContext(ThemeContext)
 
   const { setVisibleForm } = useContext(ModalContext)
 
-  const { className, title, inputs, submitText = title, footerText } = formData
+  const { className, title, inputs, submitText = title, footerText } = formPlaceholder
 
   const formFields = inputs.map((item, idx) => {
     const { type, name, placeholder } = item
 
     return (
-      <label className="form-label" key={idx}>
+      <label
+        className="form-label"
+        key={idx}>
         <input
           className="form-input"
           type={type}
           name={name}
-          placeholder={placeholder} />
+          placeholder={placeholder}
+          autoComplete={name} />
       </label>
     )
   })
@@ -29,17 +34,30 @@ export const ModalForm = forwardRef(({ formData }, ref) => {
   const { question, formName, formSubmitText } = footerText
 
   return (
-    <form className={`modal__form ${className}`} ref={ref} >
-      <h2 className="main-title">
+    <form
+      className={`modal__form ${className}`}
+      ref={ref} >
+      <Title>
         {title}
-      </h2>
+      </Title>
       {formFields}
       <Button type="submit">
         {submitText}
       </Button>
-      <p className="form__footer main-text" style={{ color: `${text}aa` }}>
-        {question} <button className="switch-form" type="button" onClick={() => setVisibleForm(`${formName} transition`)} style={{ color: action, borderBottom: '1px solid currentColor', marginLeft: '3px' }}>{formSubmitText}</button>
-      </p>
+      <Text
+        className="modal__form-footer"
+        style={{
+          color: text
+        }}>
+        {question}
+        <button
+          className="switch-form"
+          type="button"
+          onClick={() => setVisibleForm(`${formName} transition`)}
+          style={{ color: action }}>
+          {formSubmitText}
+        </button>
+      </Text>
     </form>
   )
 })

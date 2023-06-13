@@ -78,7 +78,7 @@ const Header = () => {
     switchTheme(themeOption)
   }
 
-  const [isMenuOpen, setIsMenuOpen] = useState(!1)
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
   const bodyRef = useRef(document.body)
 
   const handleMenu = () => {
@@ -114,11 +114,13 @@ const Header = () => {
           <Logo />
           <nav className={`menu ${isMenuOpen ? 'open' : ''} `.trim()}>
             <Navbar />
-            <button className="menu-burger" onClick={handleMenu}>
+            <button
+              className="menu-burger"
+              onClick={handleMenu}>
               {Array.from({ length: 3 }, (_, i) => (
                 <span key={i}
                   style={{
-                    background: value === 'default' ? '' : value === 'light' ? text : action
+                    background: value === 'light' ? text : action
                   }}></span>
               ))}
             </button>

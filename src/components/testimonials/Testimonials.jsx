@@ -44,7 +44,7 @@ const testimonialsSwiperData = [
 ]
 
 const Testimonials = () => {
-  const { theme: { value, colors: { action, auxiliary } } } = useContext(ThemeContext)
+  const { theme: { value, colors: { action, auxiliary, background } } } = useContext(ThemeContext)
 
   const testimonialsSlides = testimonialsSwiperData.map(item => {
     const { id, img, name, description, text } = item
@@ -56,9 +56,14 @@ const Testimonials = () => {
             className="testimonials__slide-img"
             src={img}
             alt={name} />
-          <figcaption className="testimonials__slide-figcaption">
+          <figcaption
+            className="testimonials__slide-figcaption"
+            style={{
+              '--circleCol': action,
+              background: value === 'default' ? `${background}33` : `${action}11`
+            }}>
             <h3 style={{
-              color: value !== 'default' && action
+              color: value === 'fresh' ? background : value !== 'default' && action
             }}>
               {name}
             </h3>

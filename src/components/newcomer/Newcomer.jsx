@@ -15,7 +15,6 @@ import toolbox from '../../assets/images/newcomer/toolbox.svg'
 import procreate from '../../assets/images/newcomer/procreate.svg'
 
 const Newcomer = ({ onPropToggle }) => {
-
   const [newcomerData, setNewcomerData] = useState([
     {
       id: 1,

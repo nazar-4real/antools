@@ -85,11 +85,15 @@ const Footer = () => {
           {name}
         </a>
       </li>
-    )) : <span className="main-text">The list is still empty</span>
+    )) : <Text>The list is still empty</Text>
 
     return (
-      <div className="footer__column" key={colId}>
-        <h5 className="footer__column-title" style={{ color: action }}>
+      <div
+        className="footer__column"
+        key={colId}>
+        <h5
+          className="footer__column-title"
+          style={{ color: action }}>
           {title}
         </h5>
         <ul className="footer__column-nav">
@@ -100,17 +104,21 @@ const Footer = () => {
   })
 
   return (
-    <footer className="footer" style={{
-      '--borderCol': value === 'default' ? `${text}33` : `${action}33`
-    }}>
+    <footer
+      className="footer"
+      style={{
+        '--borderCol': value === 'default' ? `${text}33` : `${action}33`
+      }}>
       <div className="container">
         <div className="footer__body">
           <div className="footer__columns">
             <div className="footer__column">
               <Logo />
-              <p className="footer__copy" style={{
-                color: value === 'light' && text
-              }}>
+              <p
+                className="footer__copy"
+                style={{
+                  color: value === 'light' && text
+                }}>
                 Copyright 2021. Antools
               </p>
               <Text>
@@ -120,14 +128,19 @@ const Footer = () => {
             {footerNavCols}
           </div>
         </div>
-        <div className="developer" style={{
-          color: value === 'light' && text
-        }}>
-          Developed by <a href="https://github.com/nazar-4real" style={{
-            color: action,
-            fontWeight: 600,
-            fontFamily: 'fantasy'
+        <div
+          className="developer"
+          style={{
+            color: value === 'light' && text
           }}>
+          Developed by
+          <a href="https://github.com/nazar-4real"
+            style={{
+              color: action,
+              fontWeight: 600,
+              fontFamily: 'fantasy',
+              marginLeft: '5px'
+            }}>
             {import.meta.env.VITE_APP_DEVELOPER}
           </a>
         </div>
