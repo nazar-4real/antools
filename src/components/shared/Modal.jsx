@@ -73,14 +73,12 @@ const Modal = () => {
   useEffect(() => {
     window.addEventListener('keydown', closeModalDialog)
 
-    const desktopOpenModal = window.matchMedia('(min-width: 1024px)').matches && isModalOpen
-
-    htmlRef.current.style.marginRight = desktopOpenModal ? '5px' : ''
-    bodyRef.current.style.overflow = desktopOpenModal ? 'hidden' : ''
+    htmlRef.current.style.marginRight = isModalOpen ? '5px' : ''
+    bodyRef.current.style.overflow = isModalOpen ? 'hidden' : ''
 
     const headerEl = document.querySelector('.header')
     headerEl.classList.contains('fixed') && (
-      headerEl.style.paddingRight = desktopOpenModal ? '5px' : ''
+      headerEl.style.paddingRight = isModalOpen ? '5px' : ''
     )
 
     return () => {
@@ -102,16 +100,13 @@ const Modal = () => {
         background: background,
         boxShadow: `inset 0 0 25px -15px ${action}`
       }}>
-      <div
-        className="modal-dialog"
-        style={{
-          background: auxiliary,
-          color: action,
-          border: `1px solid ${action}55`
-        }}>
+      <div className="modal-dialog">
         <button
           className="modal-close"
-          onClick={closeModal}>
+          onClick={closeModal}
+          style={{
+            ...(window.matchMedia('(max-width: 768px)').matches && { border: `1px solid ${action}` })
+          }}>
           {Array.from({ length: 2 }, (_, idx) => (
             <span
               key={idx}
@@ -120,7 +115,13 @@ const Modal = () => {
               }}></span>
           ))}
         </button>
-        <div className="modal__content">
+        <div
+          className="modal__content"
+          style={{
+            background: auxiliary,
+            color: action,
+            border: `1px solid ${action}55`
+          }}>
           <div
             className={`modal__forms ${visibleForm}`.trim()}
             style={{
