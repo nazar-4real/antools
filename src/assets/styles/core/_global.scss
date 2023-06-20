@@ -188,16 +188,12 @@ section {
 .modal {
   @include flexBox(center, center);
   position: fixed;
-  top: 0;
+  top: 100%;
   left: 0;
   width: 100vw;
   height: 100%;
   z-index: 50;
-  transition: all 0.8s;
-  transform: scale(0.5);
-  visibility: hidden;
-  opacity: 0;
-  border-radius: 50px;
+  transition: 1s ease;
 
   @media screen and (width <= 768px) {
     align-items: flex-start;
@@ -208,9 +204,7 @@ section {
   }
 
   &.show {
-    transform: scale(1);
-    visibility: visible;
-    opacity: 1;
+    top: 0;
     border-radius: 0;
     overflow-y: auto;
     overscroll-behavior: contain;
@@ -223,26 +217,14 @@ section {
   &-dialog {
     width: min(580px, 90%);
     position: relative;
-    transform: translateY(70px);
     display: grid;
     place-items: center;
     grid-gap: 30px;
-    opacity: 0;
-    transition: all 0.8s;
+    transition: 0.8s;
 
     @media screen and (width <= 768px) {
       padding: 40px 0 60px;
     }
-  }
-
-  span {
-    align-self: end;
-    font-size: 11px;
-  }
-
-  &.show &-dialog {
-    opacity: 1;
-    transform: translateY(0);
   }
 
   &-close {

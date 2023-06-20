@@ -72,7 +72,7 @@ const selectStyles = {
 const Header = () => {
   const { switchTheme, themeOptions, theme, theme: { value, colors: { action, auxiliary, background, text } } } = useContext(ThemeContext)
 
-  const { openModal } = useContext(ModalContext)
+  const { isModalOpen, openModal } = useContext(ModalContext)
 
   const selectTheme = (themeOption) => {
     switchTheme(themeOption)
@@ -85,6 +85,10 @@ const Header = () => {
     setIsMenuOpen(!isMenuOpen)
     bodyRef.current.style.overflow = !isMenuOpen ? 'hidden' : ''
   }
+
+  useEffect(() => {
+    isModalOpen && !setIsMenuOpen(false)
+  }, [isModalOpen])
 
   const headerRef = useRef();
   const [fixedHeader, setFixedHeader] = useState(false)

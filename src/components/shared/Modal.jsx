@@ -73,14 +73,16 @@ const Modal = () => {
   useEffect(() => {
     window.addEventListener('keydown', closeModalDialog)
 
-    htmlRef.current.style.marginRight = isModalOpen ? '5px' : ''
-    bodyRef.current.style.overflow = isModalOpen ? 'hidden' : ''
+    if (window.matchMedia('(min-width: 991px)').matches) {
+      htmlRef.current.style.marginRight = isModalOpen ? '5px' : ''
+      bodyRef.current.style.overflow = isModalOpen ? 'hidden' : ''
 
-    const headerEl = document.querySelector('.header')
-    headerEl.classList.contains('fixed') && (
-      headerEl.style.paddingRight = isModalOpen ? '5px' : ''
-    )
-
+      const headerEl = document.querySelector('.header')
+      headerEl.classList.contains('fixed') && (
+        headerEl.style.paddingRight = isModalOpen ? '5px' : ''
+      )
+    }
+    
     return () => {
       window.removeEventListener('keydown', closeModalDialog)
     }

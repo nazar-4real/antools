@@ -95,7 +95,7 @@
 
     @media (width <= 991px) {
       position: fixed;
-      top: 0;
+      top: -100%;
       left: 0;
       width: 100vw;
       height: 100%;
@@ -110,8 +110,7 @@
       flex-direction: column;
       justify-content: unset;
       visibility: hidden;
-      transform: translateY(-100%);
-      transition: 0.8s;
+      transition: 1s ease;
       will-change: transform;
       overflow-y: auto;
     }
@@ -119,7 +118,7 @@
 
   &.open .menu__list {
     visibility: visible;
-    transform: translateY(0);
+    top: 0;
   }
 
   &__item-link {
