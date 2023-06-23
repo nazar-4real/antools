@@ -98,7 +98,7 @@ const Header = () => {
 
     window.addEventListener('scroll', setFixedValue)
 
-    bodyRef.current.style.paddingTop = fixedHeader ? `${headerRef.current.offsetHeight}px` : 0
+    bodyRef.current.style.paddingTop = fixedHeader ? `${headerRef.current.offsetHeight}px` : ''
 
     return () => {
       window.removeEventListener('scroll', setFixedValue)
