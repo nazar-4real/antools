@@ -116,7 +116,7 @@ const Header = () => {
       <div className="container">
         <div className="header__body">
           <Logo />
-          <nav className={`menu ${isMenuOpen ? 'open' : ''} `.trim()}>
+          <nav className={`menu ${isMenuOpen ? 'open' : ''} ${isModalOpen ? 'menu-fade' : ''}`.trim()}>
             <Navbar />
             <button
               className="menu-burger"
