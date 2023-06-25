@@ -157,6 +157,8 @@
 
     &.disabled-arrow {
       filter: grayscale(1) opacity(0.3);
+      pointer-events: none;
+      cursor: not-allowed;
     }
   }
 
