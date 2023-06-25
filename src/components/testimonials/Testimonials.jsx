@@ -102,8 +102,7 @@ const Testimonials = () => {
       <button
         className="swiper-arrow arrow-prev"
         ref={prevRef}
-        aria-label='Prev slide'
-        role='button'>
+        aria-label='Prev slide'>
         <svg width="16" height="28" viewBox="0 0 16 28" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M14 26L2 14L14 2" stroke={`${action}`} strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
@@ -140,8 +139,7 @@ const Testimonials = () => {
       <button
         className="swiper-arrow arrow-next"
         ref={nextRef}
-        aria-label='Next slide'
-        role='button'>
+        aria-label='Next slide'>
         <svg width="16" height="28" viewBox="0 0 16 28" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M2 26L14 14L2 2" stroke={`${action}`} strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
