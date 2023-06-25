@@ -10,33 +10,46 @@ import './testimonials.scss'
 import { Section } from '../shared/Section'
 import { Text } from '../shared/Text'
 
-import testimonial from 'src/assets/images/testimonials/testimonial.png'
+import testimonialWebp from 'src/assets/images/testimonials/testimonial.webp'
+import testimonialPng from 'src/assets/images/testimonials/testimonial.png'
 
 const testimonialsSwiperData = [
   {
     id: 1,
-    img: testimonial,
+    img: {
+      webp: testimonialWebp,
+      png: testimonialPng
+    },
     name: 'Ronald Richards',
     description: 'Product Manager',
     text: 'Incididunt cillum do sint sint enim ullamco id deserunt mollit qui reprehenderit do. Velit ex tempor cillum ad sint occaecat. Do nulla velit labore occaecat do deserunt Lorem magna officia incididunt consectetur amet. Sunt consectetur veniam minim ex commodo sint non. Occaecat aute officia excepteur non laboris id qui ad.'
   },
   {
     id: 2,
-    img: testimonial,
+    img: {
+      webp: testimonialWebp,
+      png: testimonialPng
+    },
     name: 'Glory Mattew',
     description: 'CEO',
     text: 'Incididunt cillum do sint sint enim ullamco id deserunt mollit qui reprehenderit do. Velit ex tempor cillum ad sint occaecat.'
   },
   {
     id: 3,
-    img: testimonial,
+    img: {
+      webp: testimonialWebp,
+      png: testimonialPng
+    },
     name: 'Mike Florin',
     description: 'Front-End Developer',
     text: 'Incididunt cillum do sint sint enim ullamco id deserunt mollit qui reprehenderit do. Velit ex tempor cillum ad sint occaecat. Do nulla velit labore occaecat do deserunt Lorem magna officia incididunt consectetur amet. Sunt consectetur veniam minim ex commodo sint non.'
   },
   {
     id: 4,
-    img: testimonial,
+    img: {
+      webp: testimonialWebp,
+      png: testimonialPng
+    },
     name: 'Jakob Pervel',
     description: 'Back-End Developer',
     text: 'Incididunt cillum do sint sint enim ullamco id deserunt mollit qui reprehenderit do. Velit ex tempor cillum ad sint occaecat. Do nulla velit labore occaecat do deserunt Lorem magna officia incididunt consectetur amet.'
@@ -47,15 +60,15 @@ const Testimonials = () => {
   const { theme: { value, colors: { action, auxiliary, background } } } = useContext(ThemeContext)
 
   const testimonialsSlides = testimonialsSwiperData.map(item => {
-    const { id, img, name, description, text } = item
+    const { id, img: { avif, webp, png }, name, description, text } = item
 
     return (
       <SwiperSlide className="testimonials__slide" key={id}>
         <figure className="testimonials__slide-figure">
-          <img
-            className="testimonials__slide-img"
-            src={img}
-            alt={name} />
+          <picture className="testimonials__slide-img">
+            <source srcSet={webp} type="image/webp" />
+            <img src={png} alt="Testimonial" />
+          </picture>
           <figcaption
             className="testimonials__slide-figcaption"
             style={{
@@ -77,7 +90,7 @@ const Testimonials = () => {
             {text}
           </Text>
         </div>
-      </SwiperSlide>
+      </SwiperSlide >
     )
   })
 
@@ -86,7 +99,11 @@ const Testimonials = () => {
 
   return (
     <Section className="testimonials">
-      <button className="swiper-arrow arrow-prev" ref={prevRef}>
+      <button
+        className="swiper-arrow arrow-prev"
+        ref={prevRef}
+        aria-label='Prev slide'
+        role='button'>
         <svg width="16" height="28" viewBox="0 0 16 28" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M14 26L2 14L14 2" stroke={`${action}`} strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
@@ -120,7 +137,11 @@ const Testimonials = () => {
         {testimonialsSlides}
         <div className="swiper-pagination"></div>
       </Swiper>
-      <button className="swiper-arrow arrow-next" ref={nextRef}>
+      <button
+        className="swiper-arrow arrow-next"
+        ref={nextRef}
+        aria-label='Next slide'
+        role='button'>
         <svg width="16" height="28" viewBox="0 0 16 28" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M2 26L14 14L2 2" stroke={`${action}`} strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
         </svg>

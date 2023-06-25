@@ -46,8 +46,10 @@
       }
     }
 
-    &-img {
+    &-img,
+    &-img img {
       @include dimensions100;
+      display: block;
       object-fit: contain;
     }
 
