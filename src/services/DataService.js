@@ -7,7 +7,7 @@ class DataService {
       return await response.json()
     } catch (error) {
       console.error(error)
-      throw new Error(`Failed to get data fron ${url}}`)
+      throw new Error(`Failed to get data from ${url}}`)
     }
   }
 
