@@ -44,7 +44,7 @@ const selectStyles = {
     border: `1px solid ${text}`,
     overflow: 'hidden',
     margin: '0 0 0 -21px',
-    minWidth: '110px'
+    width: 'auto'
   }),
   menuList: () => ({
     padding: 0,

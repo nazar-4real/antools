@@ -60,7 +60,7 @@ const Testimonials = () => {
   const { theme: { value, colors: { action, auxiliary, background } } } = useContext(ThemeContext)
 
   const testimonialsSlides = testimonialsSwiperData.map(item => {
-    const { id, img: { avif, webp, png }, name, description, text } = item
+    const { id, img: { webp, png }, name, description, text } = item
 
     return (
       <SwiperSlide className="testimonials__slide" key={id}>
@@ -124,8 +124,6 @@ const Testimonials = () => {
           swiper.navigation.update()
         }}
         navigation={{
-          prevEl: false,
-          nextEl: false,
           disabledClass: 'disabled-arrow'
         }}
         pagination={{
