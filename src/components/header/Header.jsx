@@ -94,7 +94,7 @@ const Header = () => {
   const [fixedHeader, setFixedHeader] = useState(false)
 
   useEffect(() => {
-    const setFixedValue = () => setFixedHeader(window.scrollY > 220)
+    const setFixedValue = () => setFixedHeader(window.scrollY > headerRef.current.offsetHeight)
 
     window.addEventListener('scroll', setFixedValue)
 
@@ -120,6 +120,7 @@ const Header = () => {
             <Navbar />
             <button
               className="menu-burger"
+              aria-label="Menu burger"
               onClick={handleMenu}>
               {Array.from({ length: 3 }, (_, i) => (
                 <span key={i}
