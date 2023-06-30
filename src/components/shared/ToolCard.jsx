@@ -68,7 +68,7 @@ const ToolCard = ({ toolData, propHandler }) => {
               color: ['default', 'plum'].includes(value) ? '#fff' : textColor
             }}>
             {name}
-          </h5>
+          </h3>
           <p
             className="tools__card-status"
             style={{
