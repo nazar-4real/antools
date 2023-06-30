@@ -1,4 +1,5 @@
 import { useContext } from 'react'
+import { Link } from 'react-router-dom'
 
 import { ThemeContext } from 'src/context/ThemeStore'
 
@@ -80,7 +81,7 @@ const Footer = () => {
           className="footer__column-nav-link"
           href={url}
           style={{
-            color: value === 'plum' ? '#fff' : text
+            color: value === 'plum' ? action : `${text}99`
           }}>
           {name}
         </a>
@@ -91,11 +92,11 @@ const Footer = () => {
       <div
         className="footer__column"
         key={colId}>
-        <h5
+        <p
           className="footer__column-title"
           style={{ color: action }}>
           {title}
-        </h5>
+        </p>
         <ul className="footer__column-nav">
           {colNavLink}
         </ul>

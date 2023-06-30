@@ -1,4 +1,5 @@
 import { useContext } from 'react'
+import { Link } from 'react-router-dom'
 
 import { ThemeContext } from 'src/context/ThemeStore'
 
@@ -6,7 +7,7 @@ export const Logo = () => {
   const { theme: { value, colors: { action, text } } } = useContext(ThemeContext)
 
   return (
-    <a className="logo" href="#">
+    <a className="logo" href="/">
       <svg width="140" height="38" viewBox="0 0 140 38" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect width="38" height="38" rx="8" fill={action} style={{ transition: '.3s' }} />
         <path fillRule="evenodd" clipRule="evenodd" d="M19.9645 12.4359C19.632 12.4359 19.3089 12.4769 19 12.5542C19.1988 10.7606 19.9148 9.12398 20.9963 7.79492C25.2971 8.30464 28.6332 11.9646 28.6332 16.4029V22.7294C28.4605 22.7391 28.2864 22.744 28.1112 22.744C24.6706 22.744 21.6709 20.8483 20.1028 18.0423H23.9315V16.4029C23.9315 14.212 22.1554 12.4359 19.9645 12.4359Z" fill="white" />
