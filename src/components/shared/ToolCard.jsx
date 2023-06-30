@@ -62,7 +62,7 @@ const ToolCard = ({ toolData, propHandler }) => {
             alt={name} />
         </div>
         <div className="tools__card-caption">
-          <h5
+          <h3
             className="tools__card-name"
             style={{
               color: ['default', 'plum'].includes(value) ? '#fff' : textColor
