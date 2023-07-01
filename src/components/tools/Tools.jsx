@@ -8,7 +8,7 @@ import { Section } from '../shared/Section'
 import { Title } from '../shared/Title'
 import { Text } from '../shared/Text'
 import { Button } from '../shared/Button'
-import { ToolCards } from '../shared/ToolCards'
+import { ToolCard } from '../shared/ToolCard'
 
 import codepen from 'src/assets/images/tools/codepen.svg'
 import docker from 'src/assets/images/tools/docker.svg'
@@ -263,6 +263,13 @@ const Tools = ({ onPropToggle }) => {
       })
   }, [])
 
+  const toolsCards = toolsData.map((dataItem) => (
+    <ToolCard
+      key={dataItem.id}
+      toolData={dataItem}
+      propHandler={propHandler} />
+  ))
+
   return (
     <Section className="tools">
       <div className="tools__info">
@@ -275,9 +282,7 @@ const Tools = ({ onPropToggle }) => {
         </Text>
       </div>
       <div className="tools__cards">
-        <ToolCards
-          data={toolsToShow}
-          propHandler={propHandler} />
+        {toolsCards}
       </div>
       {toolsToShow.length < toolsData.length && (
         <Button

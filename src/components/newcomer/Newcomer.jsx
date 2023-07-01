@@ -7,7 +7,7 @@ import { Title } from '../shared/Title'
 import { Text } from '../shared/Text'
 import { Button } from '../shared/Button'
 
-import { ToolCards } from '../shared/ToolCards'
+import { ToolCard } from '../shared/ToolCard'
 
 import zeplin from '../../assets/images/newcomer/zeplin.svg'
 import phpstorm from '../../assets/images/newcomer/phpstorm.svg'
@@ -62,6 +62,13 @@ const Newcomer = ({ onPropToggle }) => {
     onPropToggle(prop, id, setNewcomerData, newcomerData)
   }
 
+  const newcomerCards = newcomerData.map(dataItem => (
+    <ToolCard
+      key={dataItem.id}
+      toolData={dataItem}
+      propHandler={propHandler} />
+  ))
+
   return (
     <Section className="newcomer">
       <div className="newcomer__info">
@@ -76,9 +83,7 @@ const Newcomer = ({ onPropToggle }) => {
         </Button>
       </div>
       <div className="newcomer__cards">
-        <ToolCards
-          data={newcomerData}
-          propHandler={propHandler} />
+        {newcomerCards}
       </div>
     </Section>
   )
