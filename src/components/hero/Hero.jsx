@@ -10,33 +10,33 @@ import { Section } from '../shared/Section'
 import { Title } from '../shared/Title'
 import { Text } from '../shared/Text'
 
-import facebook from 'src/assets/images/social/facebook.svg'
-import instagram from 'src/assets/images/social/instagram.svg'
-import twitter from 'src/assets/images/social/twitter.svg'
+import { ReactComponent as Facebook } from 'src/assets/images/social/facebook.svg'
+import { ReactComponent as Instagram } from 'src/assets/images/social/instagram.svg'
+import { ReactComponent as Twitter } from 'src/assets/images/social/twitter.svg'
 
 const socialData = [
   {
     id: 1,
     url: 'https://facebook.com/',
     name: 'Facebook',
-    icon: facebook
+    icon: <Facebook />
   },
   {
     id: 2,
     url: 'https://www.instagram.com/',
     name: 'Instagram',
-    icon: instagram
+    icon: <Instagram />
   },
   {
     id: 3,
     url: 'https://twitter.com/',
     name: 'Twitter',
-    icon: twitter
+    icon: <Twitter />
   }
 ]
 
 const Hero = () => {
-  const { theme: { value } } = useContext(ThemeContext)
+  const { theme: { value, colors: { action, text } } } = useContext(ThemeContext)
 
   const renderSocial = socialData.map(item => {
     const { id, url, name, icon } = item
@@ -46,11 +46,11 @@ const Hero = () => {
         className="social__link"
         href={url}
         key={id}
-        target="_blank">
-        <img
-          className="social__link-icon"
-          src={icon}
-          alt={name} />
+        target="_blank"
+        style={{
+          color: value === 'default' ? text : action
+        }}>
+        {icon}
       </a>
     )
   })
@@ -60,7 +60,7 @@ const Hero = () => {
       <div className="hero__info">
         <Title size="50px">
           Awesome tools for Designer & Developer<span style={{
-            color: value !== 'default' && '#fff'
+            color: value === 'default' ? action : text
           }}>.</span>
         </Title>
         <Text>

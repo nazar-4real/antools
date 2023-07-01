@@ -44,10 +44,6 @@
       font-size: 36px;
       line-height: 54px;
     }
-
-    span {
-      color: $orange;
-    }
   }
 
   .main-text {
@@ -84,7 +80,7 @@
     }
 
     &:hover {
-      border-color: $white;
+      border-color: currentColor;
     }
   }
 
