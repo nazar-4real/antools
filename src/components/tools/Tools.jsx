@@ -226,14 +226,6 @@ const Tools = ({ onPropToggle }) => {
     ]
   )
 
-  const [visibleTools, setVisibleTools] = useState(6)
-
-  const handleLoadMore = () => {
-    setVisibleTools(prevTools => prevTools + 3)
-  };
-
-  const toolsToShow = toolsData.slice(0, visibleTools)
-
   const propHandler = (prop, id) => {
     onPropToggle(prop, id, setToolsData, toolsData)
   }
@@ -263,7 +255,15 @@ const Tools = ({ onPropToggle }) => {
       })
   }, [])
 
-  const toolsCards = toolsData.map((dataItem) => (
+  const [visibleTools, setVisibleTools] = useState(6)
+
+  const handleLoadMore = () => {
+    setVisibleTools(prevTools => prevTools + 3)
+  };
+
+  const toolsToShow = toolsData.slice(0, visibleTools)
+
+  const toolsCards = toolsToShow.map((dataItem) => (
     <ToolCard
       key={dataItem.id}
       toolData={dataItem}
