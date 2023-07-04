@@ -1,11 +1,11 @@
 import { useState, useContext } from 'react'
+import { Link } from 'react-router-dom'
 
 import { ThemeContext } from 'src/context/ThemeStore'
 
 import { Text } from './Text'
 import { AttachIcon } from './AttachIcon'
 import { LikeIcon } from './LikeIcon'
-import { Button } from './Button'
 
 const ToolCard = ({ toolData, propHandler }) => {
   const { theme: { value, colors: { action, auxiliary, background, text: textColor } } } = useContext(ThemeContext)
@@ -102,9 +102,15 @@ const ToolCard = ({ toolData, propHandler }) => {
             onChange={onPropHandle} />
           <AttachIcon />
         </label>
-        <Button onClick={() => window.location.href = url}>
+        <Link
+          className="main-btn"
+          to={`/tools/${url}`}
+          style={{
+            background: action,
+            color: textColor
+          }}>
           Visit
-        </Button>
+        </Link>
       </div>
     </div>
   )

@@ -526,3 +526,12 @@ section {
     }
   }
 }
+
+// Error page
+.error-page {
+  @include flexBox(center, center);
+  flex-direction: column;
+  gap: 30px;
+  position: fixed;
+  inset: 0;
+}
