@@ -27,11 +27,16 @@ const ToolPage = () => {
 
   return (
     <Section className="tool" style={styles}>
-      <div className="tool__caption" style={{ display: 'flex', alignItems: 'center', gap: '40px' }}>
+      <div className="tool__product" style={{ display: 'flex', alignItems: 'center', flexDirection: 'column', gap: '10px' }}>
+        <img src={icon} alt={name} style={{ width: '100px', height: '80px', objectFit: 'contain' }} />
         <Title style={{ margin: 0 }}>{name}</Title>
         <Text>{status}</Text>
+        <Text>{text}</Text>
+        <div className="tool__product-actions" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '20px' }}>
+          {liked ? <b>♥︎</b> : <b>♡</b>}
+          {attached ? <b>★</b> : <b>☆</b>}
+        </div>
       </div>
-      <img src={icon} alt={name} />
     </Section>
   )
 }
