@@ -1,4 +1,5 @@
 import { useContext } from 'react'
+import { Link } from 'react-router-dom'
 
 import { ThemeContext } from 'src/context/ThemeStore'
 import { ModalContext } from 'src/context/ModalContext'
@@ -14,7 +15,6 @@ const navData = [
   {
     id: 2,
     name: 'Categories',
-    link: '/',
     submenu: [
       {
         id: 1,
@@ -40,8 +40,8 @@ const navData = [
   },
   {
     id: 3,
-    name: 'My Collections',
-    link: '/'
+    name: 'Popular Tools',
+    link: 'tools'
   },
   {
     id: 4,
@@ -86,16 +86,15 @@ const Navbar = () => {
         key={id}
         style={{
           ...(submenuArr && { '--arrowColor': action }),
-          color: value === 'default' ? 'rgba(255, 255, 255, 0.55)' : action
         }}>
-        <a
+        <Link
           className="menu__item-link"
-          href={link}
+          to={link}
           style={{
-            color: value === 'plum' ? action : value !== 'default' && text
+            color: value === 'plum' ? action : `${text}99`
           }}>
           {name}
-        </a>
+        </Link>
         {
           submenuArr && (
             <ul
