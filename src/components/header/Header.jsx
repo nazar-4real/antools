@@ -1,4 +1,5 @@
 import { useState, useEffect, useContext, useRef } from 'react'
+import { useLocation } from 'react-router-dom'
 import Select from 'react-select'
 
 import { ThemeContext } from 'src/context/ThemeStore'
@@ -94,16 +95,22 @@ const Header = () => {
   const [fixedHeader, setFixedHeader] = useState(false)
 
   useEffect(() => {
-    const setFixedValue = () => setFixedHeader(window.scrollY > headerRef.current.offsetHeight)
+    const setFixedValue = () => setFixedHeader(window.scrollY >= headerRef.current.offsetHeight)
 
     window.addEventListener('scroll', setFixedValue)
-
-    bodyRef.current.style.paddingTop = fixedHeader ? `${headerRef.current.offsetHeight}px` : ''
 
     return () => {
       window.removeEventListener('scroll', setFixedValue)
     }
-  }, [window.scrollY])
+  }, [])
+
+  const location = useLocation()
+
+  useEffect(() => {
+    setIsMenuOpen(false)
+  }, [location])
+
+  const navClass = `menu ${isMenuOpen ? 'open' : ''}${isModalOpen && window.matchMedia('(max-width: 630px)').matches ? 'menu-fade' : ''}`
 
   return (
     <header
@@ -116,7 +123,8 @@ const Header = () => {
       <div className="container">
         <div className="header__body">
           <Logo />
-          <nav className={`menu ${isMenuOpen ? 'open' : ''} ${isModalOpen ? 'menu-fade' : ''}`.trim()}>
+          <nav
+            className={navClass}>
             <Navbar />
             <button
               className="menu-burger"
