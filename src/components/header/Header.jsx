@@ -82,14 +82,12 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const bodyRef = useRef(document.body)
 
-  const handleMenu = () => {
-    setIsMenuOpen(!isMenuOpen)
-    bodyRef.current.style.overflow = !isMenuOpen ? 'hidden' : ''
-  }
+  const handleMenu = () => setIsMenuOpen(!isMenuOpen)
 
   useEffect(() => {
-    isModalOpen && !setIsMenuOpen(false)
-  }, [isModalOpen])
+    isModalOpen && setIsMenuOpen(false)
+    bodyRef.current.classList.toggle('no-scroll', isMenuOpen || isModalOpen)
+  }, [isModalOpen, isMenuOpen])
 
   const headerRef = useRef();
   const [fixedHeader, setFixedHeader] = useState(false)

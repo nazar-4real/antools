@@ -28,6 +28,10 @@ html {
 body {
   font-family: $baseFont;
   color: $white;
+
+  &.no-scroll {
+    overflow: hidden;
+  }
 }
 
 body,

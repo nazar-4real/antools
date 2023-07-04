@@ -74,7 +74,6 @@ const Modal = () => {
     window.addEventListener('keydown', closeModalDialog)
 
     htmlRef.current.style.marginRight = isModalOpen ? '5px' : ''
-    bodyRef.current.style.overflow = isModalOpen ? 'hidden' : ''
 
     const headerEl = document.querySelector('.header')
     headerEl.classList.contains('fixed') && (
