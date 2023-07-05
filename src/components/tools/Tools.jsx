@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react'
 
+import { useLocalStorage } from 'src/hooks/useLocalStorage'
+
 import { DataService } from 'src/services/DataService'
 
 import './tools.scss'
@@ -224,7 +226,9 @@ export const toolsDataArr = [
 ]
 
 const Tools = ({ onPropToggle }) => {
-  const [toolsData, setToolsData] = useState(toolsDataArr.slice(0, 6))
+  const [toolsData, setToolsData] = useState(
+    JSON.parse(localStorage.getItem('toolsData')) ?? toolsDataArr.slice(0, 6)
+  )
 
   const handleLoadMore = () => {
     const nextTools = toolsDataArr.slice(toolsData.length, toolsData.length + 3)
@@ -232,8 +236,16 @@ const Tools = ({ onPropToggle }) => {
   }
 
   const propHandler = (prop, id) => {
-    onPropToggle(prop, id, setToolsData)
+    onPropToggle(prop, id, setToolsData);
   }
+
+  useEffect(() => {
+    localStorage.setItem('toolsData', JSON.stringify(toolsData))
+  }, [toolsData])
+
+  useEffect(() => {
+    setToolsData(JSON.parse(localStorage.getItem('toolsData')) ?? toolsData)
+  }, [localStorage])
 
   const dataInstance = new DataService()
 
@@ -260,6 +272,8 @@ const Tools = ({ onPropToggle }) => {
       })
   }, [])
 
+  const rollUpCards = () => setToolsData(prevData => prevData.slice(0, 6))
+
   const toolsCards = toolsData.map((dataItem) => (
     <ToolCard
       key={dataItem.id}
@@ -281,12 +295,19 @@ const Tools = ({ onPropToggle }) => {
       <div className="tools__cards">
         {toolsCards}
       </div>
-      {toolsData.length < toolsDataArr.length && (
+      {toolsData.length < toolsDataArr.length ? (
         <Button
           className="outlined"
           href="/"
           onClick={handleLoadMore}>
           Load More
+        </Button>
+      ) : (
+        <Button
+          className="outlined"
+          href="/"
+          onClick={rollUpCards}>
+          Roll Up
         </Button>
       )}
     </Section>

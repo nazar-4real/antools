@@ -6,6 +6,7 @@ import { ThemeContext } from 'src/context/ThemeStore'
 import { Text } from './Text'
 import { AttachIcon } from './AttachIcon'
 import { LikeIcon } from './LikeIcon'
+import { Button } from './Button'
 
 const ToolCard = ({ toolData, propHandler }) => {
   const { theme: { value, colors: { action, auxiliary, background, text: textColor } } } = useContext(ThemeContext)
@@ -103,13 +104,10 @@ const ToolCard = ({ toolData, propHandler }) => {
           <AttachIcon />
         </label>
         <Link
-          className="main-btn"
-          to={`/tools/${url}`}
-          style={{
-            background: action,
-            color: textColor
-          }}>
-          Visit
+          to={`/tools/${url}`}>
+          <Button>
+            Visit
+          </Button>
         </Link>
       </div>
     </div>
