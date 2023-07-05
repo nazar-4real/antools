@@ -500,9 +500,8 @@ section {
     }
   }
 
-  .main-btn {
+  a:has(.main-btn) {
     margin-left: auto;
-    padding: 9px 35px;
     border-radius: 8px;
   }
 
