@@ -6,7 +6,9 @@ import { ErrorPage } from './shared/ErrorPage'
 
 import Hero from './hero/Hero'
 import Tools from './tools/Tools'
-import ToolPage from 'src/pages/Tool'
+import ToolPage from 'src/pages/ToolPage'
+
+import { onPropToggle } from 'src/pages/Homepage'
 
 const router = createBrowserRouter([
   {
@@ -24,7 +26,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'tools',
-        element: <Tools />
+        element: <Tools onPropToggle={onPropToggle}  />
       },
       {
         path: 'tools/:toolName',

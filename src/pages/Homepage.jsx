@@ -5,15 +5,15 @@ import Newcomer from 'src/components/newcomer/Newcomer'
 import Testimonials from 'src/components/testimonials/Testimonials'
 import Contact from 'src/components/contact/Contact'
 
-const Homepage = () => {
-  const onPropToggle = (prop, id, updateData, data) => {
-    updateData(data.map(dataItem => {
-      return dataItem.id === id
-        ? { ...dataItem, [prop]: !dataItem[prop] }
-        : dataItem
-    }))
-  }
+export const onPropToggle = (prop, id, updateData, data) => {
+  updateData(data.map(dataItem => {
+    return dataItem.id === id
+      ? { ...dataItem, [prop]: !dataItem[prop] }
+      : dataItem
+  }))
+}
 
+const Homepage = () => {
   return (
     <>
       <Hero />
