@@ -229,7 +229,7 @@ const Tools = ({ onPropToggle }) => {
   const handleLoadMore = () => {
     const nextTools = toolsDataArr.slice(toolsData.length, toolsData.length + 3)
     setToolsData(prevTools => [...prevTools, ...nextTools])
-  };
+  }
 
   const propHandler = (prop, id) => {
     onPropToggle(prop, id, setToolsData)
