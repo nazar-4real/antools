@@ -2,7 +2,7 @@ import { useContext } from 'react'
 
 import { ThemeContext } from 'src/context/ThemeStore'
 
-export const Button = ({ className = '', onClick = null, children, ...attrs }) => {
+export const Button = ({ className = '', onClick = null, children, style, ...attrs }) => {
   const { theme: { value, colors: { action, text, background } } } = useContext(ThemeContext)
 
   return (
@@ -16,7 +16,8 @@ export const Button = ({ className = '', onClick = null, children, ...attrs }) =
           '--outlineCol': `${action}99`,
           background: 'transparent',
           color: value === 'plum' ? action : text
-        })
+        }),
+        ...style
       }}
       {...attrs}>
       {children}
