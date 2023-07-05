@@ -30,7 +30,7 @@ import terminal from 'src/assets/images/tools/terminal.svg'
 import vsCode from 'src/assets/images/tools/vs-code.svg'
 import vercel from 'src/assets/images/tools/vercel.svg'
 
-export const toolsInfo = [
+export const toolsDataArr = [
   {
     id: 1,
     icon: figma,
@@ -224,10 +224,15 @@ export const toolsInfo = [
 ]
 
 const Tools = ({ onPropToggle }) => {
-  const [toolsData, setToolsData] = useState(toolsInfo)
+  const [toolsData, setToolsData] = useState(toolsDataArr.slice(0, 6))
+
+  const handleLoadMore = () => {
+    const nextTools = toolsDataArr.slice(toolsData.length, toolsData.length + 3)
+    setToolsData(prevTools => [...prevTools, ...nextTools])
+  };
 
   const propHandler = (prop, id) => {
-    onPropToggle(prop, id, setToolsData, toolsData)
+    onPropToggle(prop, id, setToolsData)
   }
 
   const dataInstance = new DataService()
@@ -255,15 +260,7 @@ const Tools = ({ onPropToggle }) => {
       })
   }, [])
 
-  const [visibleTools, setVisibleTools] = useState(6)
-
-  const handleLoadMore = () => {
-    setVisibleTools(prevTools => prevTools + 3)
-  };
-
-  const toolsToShow = toolsData.slice(0, visibleTools)
-
-  const toolsCards = toolsToShow.map((dataItem) => (
+  const toolsCards = toolsData.map((dataItem) => (
     <ToolCard
       key={dataItem.id}
       toolData={dataItem}
@@ -284,7 +281,7 @@ const Tools = ({ onPropToggle }) => {
       <div className="tools__cards">
         {toolsCards}
       </div>
-      {toolsToShow.length < toolsData.length && (
+      {toolsData.length < toolsDataArr.length && (
         <Button
           className="outlined"
           href="/"

@@ -59,7 +59,7 @@ const Newcomer = ({ onPropToggle }) => {
   ])
 
   const propHandler = (prop, id) => {
-    onPropToggle(prop, id, setNewcomerData, newcomerData)
+    onPropToggle(prop, id, setNewcomerData)
   }
 
   const newcomerCards = newcomerData.map(dataItem => (
