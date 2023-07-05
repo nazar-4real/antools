@@ -1,10 +1,11 @@
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate, Link } from 'react-router-dom'
 
-import { toolsInfo } from 'src/components/tools/Tools'
+import { toolsDataArr } from 'src/components/tools/Tools'
 
 import { Section } from 'src/components/shared/Section'
 import { Title } from 'src/components/shared/Title'
 import { Text } from 'src/components/shared/Text'
+import { Button } from 'src/components/shared/Button'
 
 const styles = {
   paddingTop: '30px',
@@ -23,7 +24,9 @@ const ToolPage = () => {
     liked,
     attached,
     url
-  } = toolsInfo.find(({ url }) => url.toLowerCase() === toolName.toLowerCase())
+  } = toolsDataArr.find(({ url }) => url.toLowerCase() === toolName.toLowerCase())
+
+  const navigate = useNavigate();
 
   return (
     <Section className="tool" style={styles}>
@@ -37,6 +40,7 @@ const ToolPage = () => {
           {attached ? <b>★</b> : <b>☆</b>}
         </div>
       </div>
+      <Button onClick={() => navigate(-1)} style={{ marginTop: '40px' }}>Go back</Button>
     </Section>
   )
 }
