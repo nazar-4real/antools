@@ -1,18 +1,17 @@
 import { useState, useEffect } from 'react'
 
 export const useLocalStorage = (dataName, defaultData) => {
-  const [storageData, setStorageData] = useState(
-    JSON.parse(localStorage.getItem(dataName)) ?? defaultData
-  )
+  const [storageData, setStorageData] = useState(() => {
+    try {
+      return JSON.parse(localStorage.getItem(dataName)) ?? defaultData
+    } catch (error) {
+      return defaultData
+    }
+  })
 
   useEffect(() => {
-    !localStorage.getItem(dataName) && localStorage.setItem(dataName, JSON.stringify(defaultData))
-  }, [defaultData])
+    localStorage.setItem(dataName, JSON.stringify(storageData))
+  }, [storageData])
 
-  const setNewData = newData => {
-    setStorageData(newData)
-    localStorage.setItem(dataName, JSON.stringify(newData))
-  }
-
-  return [storageData, setNewData]
+  return [storageData, setStorageData]
 }

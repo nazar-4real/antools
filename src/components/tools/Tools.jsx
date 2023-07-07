@@ -226,26 +226,24 @@ export const toolsDataArr = [
 ]
 
 const Tools = ({ onPropToggle }) => {
-  const [toolsData, setToolsData] = useState(
+  const [toolsData, setToolsData] = useState(() =>
     JSON.parse(localStorage.getItem('toolsData')) ?? toolsDataArr.slice(0, 6)
   )
+
+  const [storageTools, setStorageTools] = useLocalStorage('toolsData', toolsData)
+
+  useEffect(() => {
+    setStorageTools(toolsData)
+  }, [toolsData])
+
+  const propHandler = (prop, id) => {
+    onPropToggle(prop, id, setToolsData)
+  }
 
   const handleLoadMore = () => {
     const nextTools = toolsDataArr.slice(toolsData.length, toolsData.length + 3)
     setToolsData(prevTools => [...prevTools, ...nextTools])
   }
-
-  const propHandler = (prop, id) => {
-    onPropToggle(prop, id, setToolsData);
-  }
-
-  useEffect(() => {
-    localStorage.setItem('toolsData', JSON.stringify(toolsData))
-  }, [toolsData])
-
-  useEffect(() => {
-    setToolsData(JSON.parse(localStorage.getItem('toolsData')) ?? toolsData)
-  }, [localStorage])
 
   const dataInstance = new DataService()
 
@@ -274,7 +272,7 @@ const Tools = ({ onPropToggle }) => {
 
   const rollUpCards = () => setToolsData(prevData => prevData.slice(0, 6))
 
-  const toolsCards = toolsData.map((dataItem) => (
+  const toolsCards = storageTools.map((dataItem) => (
     <ToolCard
       key={dataItem.id}
       toolData={dataItem}

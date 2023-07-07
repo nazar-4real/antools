@@ -1,4 +1,4 @@
-import { createContext, useState } from 'react'
+import { createContext, useEffect, useState } from 'react'
 
 import { useLocalStorage } from 'src/hooks/useLocalStorage'
 
@@ -64,16 +64,14 @@ const themeOptions = Object.entries(themeColors).map(([theme, colors]) => ({
 }))
 
 const ThemeProvider = ({ children }) => {
-  const [storedTheme, setStoredTheme] = useLocalStorage('currentTheme', 'default')
-
-  const [theme, setTheme] = useState(
-    themeOptions.find(({ value }) => value === storedTheme)
-    ?? themeOptions[0]
+  const [storageTheme, setStorageTheme] = useLocalStorage('currentTheme', themeOptions[0].value)
+  const [theme, setTheme] = useState(() =>
+    themeOptions.find(({ value }) => value === storageTheme) ?? themeOptions[0]
   )
 
   const switchTheme = (theme) => {
     setTheme(theme)
-    setStoredTheme(theme.value)
+    setStorageTheme(theme.value)
   }
 
   console.log(`%cCurrent theme: ${theme.value[0].toUpperCase()}${theme.value.substring(1)}`, `color: ${theme.colors.action}; font-size: 13px; font-weight: 700; -webkit-text-stroke: .1px ${theme.colors.text}`)
