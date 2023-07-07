@@ -8,7 +8,7 @@ import { Title } from './Title'
 import { Text } from './Text'
 
 export const ModalForm = forwardRef(({ formPlaceholder }, ref) => {
-  const { theme: { value, colors: { action, auxiliary, text } } } = useContext(ThemeContext)
+  const { theme: { colors: { action, text } } } = useContext(ThemeContext)
 
   const { setVisibleForm } = useContext(ModalContext)
 

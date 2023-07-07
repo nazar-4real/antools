@@ -5,7 +5,6 @@ import { ThemeContext } from 'src/context/ThemeStore'
 import { SearchIcon } from './SearchIcon'
 
 export const Form = ({ className, placeholder, children }) => {
-
   const { theme: { value, colors: { auxiliary, action, text } } } = useContext(ThemeContext)
 
   return (

@@ -39,7 +39,7 @@ const Hero = () => {
   const { theme: { value, colors: { action, text } } } = useContext(ThemeContext)
 
   const renderSocial = socialData.map(item => {
-    const { id, url, name, icon } = item
+    const { id, url, icon } = item
 
     return (
       <a

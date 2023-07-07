@@ -2,13 +2,12 @@ import { useContext } from 'react'
 
 import { ThemeContext } from 'src/context/ThemeStore'
 
-export const Button = ({ className = '', onClick = null, children, style, ...attrs }) => {
+export const Button = ({ className = '', children, style, ...attrs }) => {
   const { theme: { value, colors: { action, text, background } } } = useContext(ThemeContext)
 
   return (
     <button
       className={`main-btn ${className}`.trim()}
-      onClick={onClick}
       style={{
         background: action,
         color: ['brown', 'plum'].includes(value) ? background : text,

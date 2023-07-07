@@ -16,8 +16,8 @@ const formPlaceholder = {
         placeholder: 'Your email or username'
       },
       {
-        type: 'email',
-        name: 'email',
+        type: 'password',
+        name: 'password',
         placeholder: 'Your password'
       }
     ],
@@ -61,7 +61,6 @@ const Modal = () => {
   const { isModalOpen, closeModal, visibleForm } = useContext(ModalContext)
 
   const htmlRef = useRef(document.documentElement)
-  const bodyRef = useRef(document.body)
 
   const closeModalDialog = e => {
     (e.key === 'Escape'
