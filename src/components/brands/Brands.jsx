@@ -58,7 +58,9 @@ const Brands = () => {
       style={{
         '--spotCol': `${action}88`
       }}>
-      <Title style={{ color: value === 'light' && text }}>
+      <Title style={{
+        color: value === 'light' ? text : action
+      }}>
         Trusted more than 150+ brand
       </Title>
       <div className="brands__items">

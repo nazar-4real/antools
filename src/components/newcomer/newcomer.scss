@@ -17,13 +17,26 @@
     max-width: 430px;
     flex: 1 0;
 
+    @media (width <= 991px) {
+      text-align: center;
+
+      .main-title {
+        margin-bottom: 15px;
+      }
+    }
+
     .main-text {
       margin-bottom: 60px;
+
+      @media (width <= 991px) {
+        width: min(530px, 100%);
+        margin: 0 auto 20px;
+      }
     }
 
     @media (width <= 768px) {
       .main-title {
-        margin-bottom: 15px;  
+        margin-bottom: 15px;
       }
 
       .main-text {
