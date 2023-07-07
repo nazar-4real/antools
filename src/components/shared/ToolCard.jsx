@@ -85,7 +85,7 @@ const ToolCard = ({ toolData, propHandler }) => {
       <div className="tools__card-actions">
         <label
           className="tools__card-action like"
-          style={{ background: auxiliary }}>
+          style={{ background: `${action}44` }}>
           <input
             className={liked ? 'liked' : ''}
             type="checkbox"
@@ -95,7 +95,7 @@ const ToolCard = ({ toolData, propHandler }) => {
         </label>
         <label
           className="tools__card-action share"
-          style={{ background: auxiliary }}>
+          style={{ background: `${action}44` }}>
           <input
             className={attached ? 'attached' : ''}
             type="checkbox"
