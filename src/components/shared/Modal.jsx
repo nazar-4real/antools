@@ -56,7 +56,12 @@ const formPlaceholder = {
 }
 
 const Modal = () => {
-  const { theme: { value, colors: { action, background, text, auxiliary } } } = useContext(ThemeContext)
+  const {
+    theme: {
+      value,
+      colors: { action, background, text, auxiliary }
+    }
+  } = useContext(ThemeContext)
 
   const { isModalOpen, closeModal, visibleForm } = useContext(ModalContext)
 

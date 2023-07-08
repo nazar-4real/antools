@@ -5,7 +5,7 @@ import { ThemeContext } from 'src/context/ThemeStore'
 
 export const ErrorPage = () => {
   const { theme: { value, colors: { action, background, text } } } = useContext(ThemeContext)
-  const error = useRouteError();
+  const { status, statusText } = useRouteError();
 
   return (
     <div
@@ -18,7 +18,7 @@ export const ErrorPage = () => {
       </h1>
       <p>
         <i>
-          {error.status} {error.statusText}
+          {status} | {statusText}
         </i>
       </p>
       <Link

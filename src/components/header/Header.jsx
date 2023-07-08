@@ -71,7 +71,15 @@ const selectStyles = {
 }
 
 const Header = () => {
-  const { switchTheme, themeOptions, theme, theme: { value, colors: { action, auxiliary, background, text } } } = useContext(ThemeContext)
+  const {
+    switchTheme,
+    themeOptions,
+    theme,
+    theme: {
+      value,
+      colors: { action, auxiliary, background, text }
+    }
+  } = useContext(ThemeContext)
 
   const { isModalOpen, openModal } = useContext(ModalContext)
 
@@ -80,6 +88,7 @@ const Header = () => {
   }
 
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+
   const bodyRef = useRef(document.body)
 
   const handleMenu = () => setIsMenuOpen(!isMenuOpen)

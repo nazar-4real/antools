@@ -57,7 +57,12 @@ const testimonialsSwiperData = [
 ]
 
 const Testimonials = () => {
-  const { theme: { value, colors: { action, auxiliary, background } } } = useContext(ThemeContext)
+  const {
+    theme: {
+      value,
+      colors: { action, auxiliary, background }
+    }
+  } = useContext(ThemeContext)
 
   const testimonialsSlides = testimonialsSwiperData.map(item => {
     const { id, img: { webp, png }, name, description, text } = item

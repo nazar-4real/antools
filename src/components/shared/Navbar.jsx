@@ -51,7 +51,12 @@ const navData = [
 ]
 
 const Navbar = () => {
-  const { theme: { value, colors: { action, auxiliary, background, text } } } = useContext(ThemeContext)
+  const {
+    theme: {
+      value,
+      colors: { action, auxiliary, background, text }
+    }
+  } = useContext(ThemeContext)
 
   const { openModal } = useContext(ModalContext)
 
