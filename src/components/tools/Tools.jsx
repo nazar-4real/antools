@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 
 import { useLocalStorage } from 'src/hooks/useLocalStorage'
 
@@ -272,12 +272,12 @@ const Tools = ({ onPropToggle }) => {
 
   const rollUpCards = () => setToolsData(prevData => prevData.slice(0, 6))
 
-  const toolsCards = storageTools.map((dataItem) => (
+  const toolsCards = useMemo(() => storageTools.map((dataItem) => (
     <ToolCard
       key={dataItem.id}
       toolData={dataItem}
       propHandler={propHandler} />
-  ))
+  )), [storageTools, propHandler])
 
   return (
     <Section className="tools">

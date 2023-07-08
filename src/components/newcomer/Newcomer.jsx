@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useMemo } from 'react'
 
 import './newcomer.scss'
 
@@ -62,12 +62,12 @@ const Newcomer = ({ onPropToggle }) => {
     onPropToggle(prop, id, setNewcomerData)
   }
 
-  const newcomerCards = newcomerData.map(dataItem => (
+  const newcomerCards = useMemo(() => newcomerData.map(dataItem => (
     <ToolCard
       key={dataItem.id}
       toolData={dataItem}
       propHandler={propHandler} />
-  ))
+  )), [newcomerData])
 
   return (
     <Section className="newcomer">
