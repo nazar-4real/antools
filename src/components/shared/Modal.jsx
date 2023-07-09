@@ -122,8 +122,7 @@ const Modal = () => {
           className="modal__content"
           style={{
             background: auxiliary,
-            color: action,
-            border: `1px solid ${action}55`
+            color: action
           }}>
           <div
             className={`modal__forms ${visibleForm}`.trim()}

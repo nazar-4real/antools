@@ -1,0 +1,19 @@
+@import "../core/vars";
+@import "../core/mixins";
+
+.tool {
+  &__body,
+  &__picture,
+  &__picture-actions {
+    @include flexBox(center, center);
+    gap: 50px;
+  }
+
+  &__picture {
+    flex-direction: column;
+
+    &-actions {
+      gap: 30px;
+    }
+  }
+}
