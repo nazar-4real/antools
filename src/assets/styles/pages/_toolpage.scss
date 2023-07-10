@@ -71,6 +71,7 @@
     flex-direction: column;
     gap: 10px;
     align-self: stretch;
+    flex-grow: 1;
 
     .main-text {
       margin-bottom: auto;

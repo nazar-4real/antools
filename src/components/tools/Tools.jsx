@@ -229,7 +229,7 @@ export const toolsDataArr = [
 
 const Tools = () => {
   const [toolsData, setToolsData] = useState(() =>
-    (JSON.parse(localStorage.getItem('toolsData')) ?? toolsDataArr).slice(0, 6)
+    JSON.parse(localStorage.getItem('toolsData')) ?? toolsDataArr.slice(0, 6)
   )
 
   const [storageTools, setStorageTools] = useLocalStorage('toolsData', toolsData)
