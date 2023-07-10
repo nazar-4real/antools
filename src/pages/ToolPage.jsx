@@ -35,9 +35,12 @@ const ToolPage = () => {
     <Section className="tool">
       <div className="tool__picture">
         <figure className="tool__figure">
-          <img className="tool__figure-img" src={icon} alt={name} />
+          <img
+            className="tool__figure-img"
+            src={icon}
+            alt={name} />
         </figure>
-        <div className="tool__picture-actions">
+        <div className="tool__actions">
           <Like liked={liked} />
           <Attach attached={attached} />
         </div>
@@ -48,7 +51,11 @@ const ToolPage = () => {
           <Text>{status}</Text>
         </div>
         <Text>{text}</Text>
-        <Button onClick={() => navigate(-1)} style={{ marginTop: '40px' }}>Go back</Button>
+        <Button
+          onClick={() => navigate(-1)}
+          style={{ marginTop: '40px' }}>
+          Go back
+        </Button>
       </div>
     </Section>
   )

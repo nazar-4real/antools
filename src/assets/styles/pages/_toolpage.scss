@@ -4,16 +4,21 @@
 .tool {
   &__body,
   &__picture,
-  &__picture-actions {
+  &__actions {
     @include flexBox(center, center);
     gap: 50px;
   }
 
   &__picture {
     flex-direction: column;
-
-    &-actions {
-      gap: 30px;
-    }
   }
+
+  &__actions {
+    gap: 30px;
+  }
+}
+
+.tools__card-action {
+  cursor: default;
+  pointer-events: none;
 }
