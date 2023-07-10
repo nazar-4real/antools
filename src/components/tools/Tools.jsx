@@ -32,6 +32,8 @@ import terminal from 'src/assets/images/tools/terminal.svg'
 import vsCode from 'src/assets/images/tools/vs-code.svg'
 import vercel from 'src/assets/images/tools/vercel.svg'
 
+import { onPropToggle } from 'src/pages/Homepage'
+
 export const toolsDataArr = [
   {
     id: 1,
@@ -225,9 +227,9 @@ export const toolsDataArr = [
   }
 ]
 
-const Tools = ({ onPropToggle }) => {
+const Tools = () => {
   const [toolsData, setToolsData] = useState(() =>
-    JSON.parse(localStorage.getItem('toolsData')) ?? toolsDataArr.slice(0, 6)
+    (JSON.parse(localStorage.getItem('toolsData')) ?? toolsDataArr).slice(0, 6)
   )
 
   const [storageTools, setStorageTools] = useLocalStorage('toolsData', toolsData)

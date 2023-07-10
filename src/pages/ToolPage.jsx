@@ -38,8 +38,8 @@ const ToolPage = () => {
           <img className="tool__figure-img" src={icon} alt={name} />
         </figure>
         <div className="tool__picture-actions">
-          <Like style={{ ...(liked && { fill: '#dc143c', fillOpacity: 1 }) }} />
-          <Attach style={{ ...(attached && { fill: '#0091ff', fillOpacity: 1 }) }} />
+          <Like liked={liked} />
+          <Attach attached={attached} />
         </div>
       </div>
       <div className="tool__info">

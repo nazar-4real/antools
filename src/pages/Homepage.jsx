@@ -19,9 +19,9 @@ const Homepage = () => {
   return (
     <>
       <Hero />
-      <Tools onPropToggle={onPropToggle} />
+      <Tools />
       <Brands />
-      <Newcomer onPropToggle={onPropToggle} />
+      <Newcomer />
       <Testimonials />
       <Contact />
     </>

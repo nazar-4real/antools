@@ -14,7 +14,9 @@ import phpstorm from '../../assets/images/newcomer/phpstorm.svg'
 import toolbox from '../../assets/images/newcomer/toolbox.svg'
 import procreate from '../../assets/images/newcomer/procreate.svg'
 
-const Newcomer = ({ onPropToggle }) => {
+import { onPropToggle } from 'src/pages/Homepage'
+
+const Newcomer = () => {
   const [newcomerData, setNewcomerData] = useState([
     {
       id: 1,
