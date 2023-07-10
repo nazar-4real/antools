@@ -14,6 +14,8 @@ import { Button } from 'src/components/shared/Button'
 import { Like } from 'src/components/shared/Like'
 import { Attach } from 'src/components/shared/Attach'
 
+import { onPropToggle } from './Homepage'
+
 const ToolPage = () => {
   const { toolName } = useParams()
 
@@ -26,10 +28,15 @@ const ToolPage = () => {
     url
   } = toolsDataArr.find(({ url }) => url.toLowerCase() === toolName.toLowerCase())
 
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
-  const [storageTools] = useLocalStorage('toolsData');
+  const [storageTools, setStorageTools] = useLocalStorage('toolsData')
   const { attached, liked } = storageTools.find(({ url }) => url === toolName)
+
+  const switchProp = ({ target }) => {
+    const targetProp = target.getAttribute('data-prop')
+    onPropToggle(targetProp, id, setStorageTools)
+  }
 
   return (
     <Section className="tool">
@@ -41,8 +48,8 @@ const ToolPage = () => {
             alt={name} />
         </figure>
         <div className="tool__actions">
-          <Like liked={liked} />
-          <Attach attached={attached} />
+          <Like liked={liked} onChange={switchProp} />
+          <Attach attached={attached} onChange={switchProp} />
         </div>
       </div>
       <div className="tool__info">

@@ -88,8 +88,8 @@ const ToolCard = ({ toolData, propHandler }) => {
         {text}
       </Text>
       <div className="tools__card-actions">
-        <Like liked={liked} onPropHandle={onPropHandle} />
-        <Attach attached={attached} onPropHandle={onPropHandle} />
+        <Like liked={liked} onChange={onPropHandle} />
+        <Attach attached={attached} onChange={onPropHandle} />
         <Link
           to={`/tools/${url}`}>
           <Button>
