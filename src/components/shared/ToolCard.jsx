@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom'
 import { ThemeContext } from 'src/context/ThemeStore'
 
 import { Text } from './Text'
-import { AttachIcon } from './AttachIcon'
-import { LikeIcon } from './LikeIcon'
+import { Attach } from './Attach'
+import { Like } from './Like'
 import { Button } from './Button'
 
 const ToolCard = ({ toolData, propHandler }) => {
@@ -88,26 +88,8 @@ const ToolCard = ({ toolData, propHandler }) => {
         {text}
       </Text>
       <div className="tools__card-actions">
-        <label
-          className="tools__card-action like"
-          style={{ background: `${action}44` }}>
-          <input
-            className={liked ? 'liked' : ''}
-            type="checkbox"
-            data-prop="liked"
-            onChange={onPropHandle} />
-          <LikeIcon />
-        </label>
-        <label
-          className="tools__card-action share"
-          style={{ background: `${action}44` }}>
-          <input
-            className={attached ? 'attached' : ''}
-            type="checkbox"
-            data-prop="attached"
-            onChange={onPropHandle} />
-          <AttachIcon />
-        </label>
+        <Like liked={liked} onPropHandle={onPropHandle} />
+        <Attach attached={attached} onPropHandle={onPropHandle} />
         <Link
           to={`/tools/${url}`}>
           <Button>

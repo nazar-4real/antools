@@ -26,7 +26,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'tools',
-        element: <Tools onPropToggle={onPropToggle}  />
+        element: <Tools onPropToggle={onPropToggle} />
       },
       {
         path: 'tools/:toolName',

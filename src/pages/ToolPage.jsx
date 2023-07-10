@@ -11,8 +11,8 @@ import { Title } from 'src/components/shared/Title'
 import { Text } from 'src/components/shared/Text'
 import { Button } from 'src/components/shared/Button'
 
-import { LikeIcon } from 'src/components/shared/LikeIcon'
-import { AttachIcon } from 'src/components/shared/AttachIcon'
+import { Like } from 'src/components/shared/Like'
+import { Attach } from 'src/components/shared/Attach'
 
 const ToolPage = () => {
   const { toolName } = useParams()
@@ -38,8 +38,8 @@ const ToolPage = () => {
           <img className="tool__figure-img" src={icon} alt={name} />
         </figure>
         <div className="tool__picture-actions">
-          <LikeIcon style={{ ...(liked && { fill: '#dc143c', fillOpacity: 1 }) }} />
-          <AttachIcon style={{ ...(attached && { fill: '#0091ff', fillOpacity: 1 }) }} />
+          <Like style={{ ...(liked && { fill: '#dc143c', fillOpacity: 1 }) }} />
+          <Attach style={{ ...(attached && { fill: '#0091ff', fillOpacity: 1 }) }} />
         </div>
       </div>
       <div className="tool__info">
