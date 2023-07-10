@@ -1,4 +1,7 @@
+import { useContext } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
+
+import { ThemeContext } from 'src/context/ThemeStore'
 
 import { useLocalStorage } from 'src/hooks/useLocalStorage'
 
@@ -19,24 +22,19 @@ import { onPropToggle } from './Homepage'
 const ToolPage = () => {
   const { toolName } = useParams()
 
-  const {
-    id,
-    icon,
-    name,
-    status,
-    text,
-    url
-  } = toolsDataArr.find(({ url }) => url.toLowerCase() === toolName.toLowerCase())
-
   const navigate = useNavigate()
 
   const [storageTools, setStorageTools] = useLocalStorage('toolsData')
+  const { id, icon, name, text, status } = storageTools.find(({ url }) => url === toolName)
+
   const { attached, liked } = storageTools.find(({ url }) => url === toolName)
 
   const switchProp = ({ target }) => {
     const targetProp = target.getAttribute('data-prop')
     onPropToggle(targetProp, id, setStorageTools)
   }
+
+  const { theme: { colors: { action } } } = useContext(ThemeContext)
 
   return (
     <Section className="tool">
@@ -46,6 +44,9 @@ const ToolPage = () => {
             className="tool__figure-img"
             src={icon}
             alt={name} />
+          <figcaption className="tool__figcaption">
+            <Text style={{ color: action }}>{status}</Text>
+          </figcaption>
         </figure>
         <div className="tool__actions">
           <Like liked={liked} onChange={switchProp} />
@@ -53,10 +54,7 @@ const ToolPage = () => {
         </div>
       </div>
       <div className="tool__info">
-        <div className="tool__info-caption">
-          <Title style={{ margin: 0 }}>{name}</Title>
-          <Text>{status}</Text>
-        </div>
+        <Title style={{ margin: 0 }}>{name}</Title>
         <Text>{text}</Text>
         <Button
           onClick={() => navigate(-1)}

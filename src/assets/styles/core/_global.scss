@@ -368,9 +368,9 @@ section {
   overflow: hidden;
   position: relative;
   min-height: 328px;
-  animation: fade 0.5s ease-out;
+  animation: fadeRotate 0.5s ease-out;
 
-  @keyframes fade {
+  @keyframes fadeRotate {
     from {
       opacity: 0;
       transform: scale(0.5) rotate(15deg);
