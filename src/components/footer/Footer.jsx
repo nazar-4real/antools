@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import { useContext, useMemo } from 'react'
 
 import { ThemeContext } from 'src/context/ThemeStore'
 
@@ -71,7 +71,7 @@ const footerColsData = [
 const Footer = () => {
   const { theme: { value, colors: { action, text } } } = useContext(ThemeContext)
 
-  const footerNavCols = footerColsData.map(({ id: colId, title, nav }) => {
+  const footerNavCols = useMemo(() => footerColsData.map(({ id: colId, title, nav }) => {
     const colNavLink = nav?.map(({ id: linkId, url, name }) => (
       <li
         className="footer__column-nav-item"
@@ -101,7 +101,7 @@ const Footer = () => {
         </ul>
       </div>
     )
-  })
+  }), [footerColsData])
 
   return (
     <footer
