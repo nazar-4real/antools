@@ -1,8 +1,8 @@
-import { useContext } from 'react'
+import { useContext, memo } from 'react'
 
 import { ThemeContext } from 'src/context/ThemeStore'
 
-export const Like = ({ liked, onChange, ...styles }) => {
+export const Like = memo(({ liked, onChange, ...styles }) => {
   const { theme: { colors: { action } } } = useContext(ThemeContext)
 
   return (
@@ -25,4 +25,4 @@ export const Like = ({ liked, onChange, ...styles }) => {
       </svg>
     </label>
   )
-}
+})

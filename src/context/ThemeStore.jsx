@@ -1,4 +1,4 @@
-import { createContext, useState } from 'react'
+import { createContext, useState, memo } from 'react'
 
 import { useLocalStorage } from 'src/hooks/useLocalStorage'
 
@@ -63,7 +63,7 @@ const themeOptions = Object.entries(themeColors).map(([theme, colors]) => ({
   colors: colors
 }))
 
-const ThemeProvider = ({ children }) => {
+const ThemeProvider = memo(({ children }) => {
   const [storageTheme, setStorageTheme] = useLocalStorage('currentTheme', themeOptions[0].value)
   const [theme, setTheme] = useState(() =>
     themeOptions.find(({ value }) => value === storageTheme) ?? themeOptions[0]
@@ -86,6 +86,6 @@ const ThemeProvider = ({ children }) => {
       {children}
     </ThemeContext.Provider>
   )
-}
+})
 
 export { ThemeContext, ThemeProvider }

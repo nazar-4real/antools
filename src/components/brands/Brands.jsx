@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import { useContext, useMemo } from 'react'
 
 import { ThemeContext } from 'src/context/ThemeStore'
 
@@ -38,7 +38,7 @@ const brandsData = [
 const Brands = () => {
   const { theme: { value, colors: { action, text } } } = useContext(ThemeContext)
 
-  const brands = brandsData.map(({ id, icon, name }) => (
+  const brands = useMemo(() => brandsData.map(({ id, icon, name }) => (
     <div
       className="brands__item"
       key={id}>
@@ -50,7 +50,7 @@ const Brands = () => {
           filter: value === 'light' && 'brightness(0)'
         }} />
     </div>
-  ))
+  )), [brandsData, value])
 
   return (
     <Section

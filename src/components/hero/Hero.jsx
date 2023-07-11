@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import { useContext, useMemo } from 'react'
 
 import { ThemeContext } from 'src/context/ThemeStore'
 
@@ -38,7 +38,7 @@ const socialData = [
 const Hero = () => {
   const { theme: { value, colors: { action, text } } } = useContext(ThemeContext)
 
-  const renderSocial = socialData.map(item => {
+  const renderSocial = useMemo(() => socialData.map(item => {
     const { id, url, icon } = item
 
     return (
@@ -53,7 +53,7 @@ const Hero = () => {
         {icon}
       </a>
     )
-  })
+  }), [socialData, value])
 
   return (
     <Section className="hero">

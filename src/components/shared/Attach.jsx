@@ -1,8 +1,8 @@
-import { useContext } from 'react'
+import { useContext, memo } from 'react'
 
 import { ThemeContext } from 'src/context/ThemeStore'
 
-export const Attach = ({ attached, onChange, ...styles }) => {
+export const Attach = memo(({ attached, onChange, ...styles }) => {
   const { theme: { colors: { action } } } = useContext(ThemeContext)
 
   return (
@@ -27,4 +27,4 @@ export const Attach = ({ attached, onChange, ...styles }) => {
       </svg>
     </label>
   )
-}
+})

@@ -101,7 +101,7 @@ const Footer = () => {
         </ul>
       </div>
     )
-  }), [footerColsData])
+  }), [footerColsData, value])
 
   return (
     <footer

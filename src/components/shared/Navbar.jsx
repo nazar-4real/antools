@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import { useContext, useMemo } from 'react'
 import { Link } from 'react-router-dom'
 
 import { ThemeContext } from 'src/context/ThemeStore'
@@ -60,7 +60,7 @@ const Navbar = () => {
 
   const { openModal } = useContext(ModalContext)
 
-  const renderMenu = navData.map(item => {
+  const renderMenu = useMemo(() => navData.map(item => {
     const { id, name, link, submenu: submenuArr } = item
 
     const submenu = submenuArr?.map(item => {
@@ -114,7 +114,7 @@ const Navbar = () => {
         }
       </li>
     )
-  })
+  }), [navData, value])
 
   const mediaComponents = window.matchMedia('(max-width: 630px)').matches && (
     <li className="menu__item--actions">

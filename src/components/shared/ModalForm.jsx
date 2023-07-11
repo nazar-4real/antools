@@ -1,4 +1,4 @@
-import { useContext, forwardRef } from 'react'
+import { useContext, forwardRef, useMemo } from 'react'
 
 import { ThemeContext } from 'src/context/ThemeStore'
 import { ModalContext } from 'src/context/ModalContext'
@@ -14,7 +14,7 @@ export const ModalForm = forwardRef(({ formPlaceholder }, ref) => {
 
   const { className, title, inputs, submitText = title, footerText } = formPlaceholder
 
-  const formFields = inputs.map((item, idx) => {
+  const formFields = useMemo(() => inputs.map((item, idx) => {
     const { type, name, placeholder } = item
 
     return (
@@ -29,7 +29,7 @@ export const ModalForm = forwardRef(({ formPlaceholder }, ref) => {
           autoComplete={name} />
       </label>
     )
-  })
+  }), [inputs])
 
   const { question, formName, formSubmitText } = footerText
 
