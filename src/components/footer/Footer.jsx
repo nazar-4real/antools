@@ -72,7 +72,7 @@ const Footer = () => {
   const { theme: { value, colors: { action, text } } } = useContext(ThemeContext)
 
   const footerNavCols = footerColsData.map(({ id: colId, title, nav }) => {
-    const colNavLink = nav ? nav.map(({ id: linkId, url, name }) => (
+    const colNavLink = nav?.map(({ id: linkId, url, name }) => (
       <li
         className="footer__column-nav-item"
         key={linkId}>
@@ -85,9 +85,9 @@ const Footer = () => {
           {name}
         </a>
       </li>
-    )) : <Text>The list is still empty</Text>
+    ))
 
-    return (
+    return nav && (
       <div
         className="footer__column"
         key={colId}>
