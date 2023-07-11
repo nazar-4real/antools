@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react'
+import { useState, useContext, lazy, Suspense } from 'react'
 import { Link } from 'react-router-dom'
 
 import { ThemeContext } from 'src/context/ThemeStore'
@@ -7,6 +7,10 @@ import { Text } from './Text'
 import { Attach } from './Attach'
 import { Like } from './Like'
 import { Button } from './Button'
+
+import { Loader } from './Loader'
+
+const LazyImg = lazy(() => import('./LazyImg.jsx'))
 
 const ToolCard = ({ toolData, propHandler }) => {
   const {
@@ -62,10 +66,12 @@ const ToolCard = ({ toolData, propHandler }) => {
       )}
       <div className="tools__card-head">
         <div className="tools__card-icon">
-          <img
-            className="tools__card-icon-img"
-            src={icon}
-            alt={name} />
+          <Suspense fallback={<Loader style={{ color: action, position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }} />}>
+            <LazyImg
+              className="tools__card-icon-img"
+              src={icon}
+              alt={name} />
+          </Suspense>
         </div>
         <div className="tools__card-caption">
           <h3
