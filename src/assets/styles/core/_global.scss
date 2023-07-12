@@ -491,6 +491,7 @@ section {
     width: 42px;
     height: 42px;
     cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
 
     input {
       appearance: none;
