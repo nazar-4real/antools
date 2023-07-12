@@ -1,11 +1,9 @@
-import { useContext } from 'react'
+import { useContext, lazy, Suspense } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 
 import { ThemeContext } from 'src/context/ThemeStore'
 
 import { useLocalStorage } from 'src/hooks/useLocalStorage'
-
-import { toolsDataArr } from 'src/components/tools/Tools'
 
 import 'src/assets/styles/pages/_toolpage.scss'
 
@@ -16,8 +14,11 @@ import { Button } from 'src/components/shared/Button'
 
 import { Like } from 'src/components/shared/Like'
 import { Attach } from 'src/components/shared/Attach'
+import { Loader } from 'src/components/shared/Loader'
 
 import { onPropToggle } from './Homepage'
+
+const LazyImg = lazy(() => import('../components/shared/LazyImg'))
 
 const ToolPage = () => {
   const { toolName } = useParams()
@@ -40,10 +41,12 @@ const ToolPage = () => {
     <Section className="tool">
       <div className="tool__picture">
         <figure className="tool__figure">
-          <img
-            className="tool__figure-img"
-            src={icon}
-            alt={name} />
+          <Suspense fallback={<Loader />}>
+            <LazyImg
+              className="tool__figure-img"
+              src={icon}
+              alt={name} />
+          </Suspense>
           <figcaption className="tool__figcaption">
             <Text style={{ color: action }}>{status}</Text>
           </figcaption>

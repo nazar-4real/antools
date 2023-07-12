@@ -66,7 +66,7 @@ const ToolCard = ({ toolData, propHandler }) => {
       )}
       <div className="tools__card-head">
         <div className="tools__card-icon">
-          <Suspense fallback={<Loader style={{ color: action, position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }} />}>
+          <Suspense fallback={<Loader />}>
             <LazyImg
               className="tools__card-icon-img"
               src={icon}

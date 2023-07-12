@@ -422,10 +422,16 @@ section {
   }
 
   &-icon {
+    @include flexBox(stretch, flex-start);
+    flex-direction: column;
     position: relative;
     width: 64px;
     height: 64px;
     flex-shrink: 0;
+
+    svg {
+      flex-grow: 1;
+    }
 
     @media (width <= 575px) {
       width: 50px;

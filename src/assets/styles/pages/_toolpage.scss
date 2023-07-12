@@ -18,7 +18,7 @@
   }
 
   &__body {
-    @include flexBox(flex-start);
+    @include flexBox(stretch);
     gap: 70px;
 
     @media (width <= 991px) {
@@ -33,6 +33,9 @@
   }
 
   &__picture {
+    @include flexBox(stretch, flex-start);
+    flex-direction: column;
+    gap: 30px;
     flex: 0 0 200px;
 
     @media (width <= 991px) {
@@ -42,12 +45,19 @@
   }
 
   &__figure {
-    display: block;
+    @include flexBox(stretch, flex-start);
+    flex-direction: column;
+    gap: 30px;
+    position: relative;
+    flex-grow: 1;
+
+    svg {
+      flex: 1 1 200px;
+    }
   }
 
   &__figcaption {
     text-align: center;
-    margin-top: 30px;
 
     p {
       font-weight: 700;
@@ -67,14 +77,12 @@
   &__actions {
     @include flexBox(center, center);
     gap: 50px;
-    margin-top: 30px;
   }
 
   &__info {
     @include flexBox(flex-start, flex-start);
     flex-direction: column;
     gap: 10px;
-    align-self: stretch;
     flex-grow: 1;
 
     .main-text {
