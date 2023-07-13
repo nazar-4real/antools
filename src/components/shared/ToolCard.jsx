@@ -1,4 +1,4 @@
-import { useState, useContext, lazy, Suspense } from 'react'
+import { useState, useContext, lazy, Suspense, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
 import { ThemeContext } from 'src/context/ThemeStore'
@@ -26,42 +26,51 @@ const ToolCard = ({ toolData, propHandler }) => {
     propHandler(event.currentTarget.getAttribute('data-prop'), id)
   }
 
+  const [spotVisibility, setSpotVisibility] = useState(matchMedia('(max-width: 767px)').matches)
+
   const [mousePos, setMousePos] = useState({
-    posX: 0,
-    posY: 0
+    posX: spotVisibility ? 'calc(100% - 10px)' : 0,
+    posY: spotVisibility ? '10px' : 0
   })
 
-  const [visible, setVisible] = useState(false)
+  const isNotMobile = matchMedia('(min-width: 768px)').matches
 
   const handleMouseMove = e => {
-    const cardRect = e.currentTarget.getBoundingClientRect()
-    const targetX = Math.floor(e.clientX - cardRect.left)
-    const targetY = Math.floor(e.clientY - cardRect.top)
+    if (isNotMobile) {
+      const cardRect = e.currentTarget.getBoundingClientRect()
+      const targetX = Math.floor(e.clientX - cardRect.left)
+      const targetY = Math.floor(e.clientY - cardRect.top)
 
-    setMousePos({
-      posX: targetX,
-      posY: targetY
-    })
+      setMousePos({
+        posX: `${targetX}px`,
+        posY: `${targetY}px`
+      })
+    } else {
+      setMousePos(mousePos)
+    }
   }
+
+  const spotToggler = (event) => setSpotVisibility(preState => !preState ? event.type === 'mouseenter' : true)
 
   return (
     <div
       className="tools__card"
       onMouseMove={handleMouseMove}
-      onMouseEnter={() => setVisible(window.matchMedia('(min-width: 768px)').matches)}
-      onMouseLeave={() => setVisible(false)}
+      onMouseEnter={spotToggler}
+      onMouseLeave={spotToggler}
       style={{
         '--scrollbarThumb': action,
         '--scrollbar': background,
         background: auxiliary
       }}>
-      {visible && (
+      {spotVisibility && (
         <b
           className="tools__card-spot"
           style={{
-            top: `${mousePos.posY}px`,
-            left: `${mousePos.posX}px`,
-            background: action
+            top: mousePos.posY,
+            left: mousePos.posX,
+            background: action,
+            zIndex: isNotMobile && -1
           }}></b>
       )}
       <div className="tools__card-head">
