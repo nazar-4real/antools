@@ -13,5 +13,5 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Root />
       </ModalProvider>
     </ThemeProvider>
-  </StrictMode>,
+  </StrictMode>
 )

@@ -128,22 +128,6 @@ const Footer = () => {
             {footerNavCols}
           </div>
         </div>
-        <div
-          className="developer"
-          style={{
-            color: value === 'light' && text
-          }}>
-          Developed by
-          <a href="https://github.com/nazar-4real"
-            style={{
-              color: action,
-              fontWeight: 600,
-              fontFamily: 'fantasy',
-              marginLeft: '5px'
-            }}>
-            {import.meta.env.VITE_APP_DEVELOPER}
-          </a>
-        </div>
       </div>
     </footer>
   )

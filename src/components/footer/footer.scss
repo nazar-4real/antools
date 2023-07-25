@@ -65,12 +65,4 @@
     @include insertFont(14px, 25px);
     margin-top: 21px;
   }
-
-  .developer {
-    @include insertFont(11px, 19px);
-    margin-top: 70px;
-    color: $white;
-    filter: opacity(0.8);
-    text-align: right;
-  }
 }
