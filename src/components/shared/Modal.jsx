@@ -7,7 +7,7 @@ import { ModalForm } from './ModalForm'
 
 const formPlaceholder = {
   signinPlaceholder: {
-    className: "signin",
+    className: "signin-form",
     title: "Sign In",
     inputs: [
       {
@@ -23,12 +23,12 @@ const formPlaceholder = {
     ],
     footerText: {
       question: 'Don\'t have an account yet?',
-      formName: 'signup',
+      formName: 'signup-form',
       formSubmitText: 'Sign Up'
     }
   },
   signupPlaceholer: {
-    className: "signup",
+    className: "signup-form",
     title: "Sign Up",
     inputs: [
       {
@@ -49,7 +49,7 @@ const formPlaceholder = {
     ],
     footerText: {
       question: 'Already have an account?',
-      formName: 'signin',
+      formName: 'signin-form',
       formSubmitText: 'Sign In'
     }
   }
@@ -63,7 +63,7 @@ const Modal = () => {
     }
   } = useContext(ThemeContext)
 
-  const { isModalOpen, closeModal, visibleForm } = useContext(ModalContext)
+  const { isModalOpen, closeModal, visibleForm: { formName, transition }, setVisibleForm } = useContext(ModalContext)
 
   const htmlRef = useRef(document.documentElement)
 
@@ -71,7 +71,13 @@ const Modal = () => {
     (e.key === 'Escape'
       || e.target.matches('.modal')
       || e.target.closest('.modal-close'))
-      && closeModal()
+      && (
+        closeModal(),
+        setTimeout(() => setVisibleForm({
+          formName: '',
+          transition: ''
+        }), 500)
+      )
   }
 
   useEffect(() => {
@@ -125,7 +131,8 @@ const Modal = () => {
             color: action
           }}>
           <div
-            className={`modal__forms ${visibleForm}`.trim()}
+            className={`modal__forms ${transition}`.trim()}
+            data-form={formName}
             style={{
               '--labelBg': value === 'default' ? auxiliary : background,
               '--inputCol': value === 'plum' ? `${action}aa` : `${text}aa`,

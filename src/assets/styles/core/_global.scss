@@ -286,27 +286,27 @@ section {
     position: relative;
     width: 100%;
 
-    &.signin {
-      .signin {
+    &[data-form="signin-form"] {
+      .signin-form {
         transform: rotateY(0);
       }
 
-      .signup {
+      .signup-form {
         transform: rotateY(-0.5turn);
       }
     }
 
-    &.signup {
-      .signin {
+    &[data-form="signup-form"] {
+      .signin-form {
         transform: rotateY(0.5turn);
       }
 
-      .signup {
+      .signup-form {
         transform: rotateY(0);
       }
     }
 
-    &.transition :is(.signin, .signup) {
+    &.transition [class$="-form"] {
       transition: 0.7s;
     }
   }
@@ -320,7 +320,7 @@ section {
     background: inherit;
     border-radius: 5px;
 
-    &.signup {
+    &.signup-form {
       transform: translateZ(50px) rotateY(0.5turn);
     }
 

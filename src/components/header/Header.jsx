@@ -159,7 +159,7 @@ const Header = () => {
               }} />
             <Button
               className="header__action login"
-              onClick={() => openModal('signin')}
+              onClick={() => openModal('signin-form')}
               style={{
                 background: 'transparent',
                 color: (value === 'default' || value === 'light') ? text : action
@@ -168,7 +168,7 @@ const Header = () => {
             </Button>
             <Button
               className="header__action signup"
-              onClick={() => openModal('signup')}>
+              onClick={() => openModal('signup-form')}>
               Sign Up
             </Button>
           </div>

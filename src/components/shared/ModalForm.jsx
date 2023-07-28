@@ -14,6 +14,8 @@ export const ModalForm = forwardRef(({ formPlaceholder }, ref) => {
 
   const { className, title, inputs, submitText = title, footerText } = formPlaceholder
 
+  const { question, formName, formSubmitText } = footerText
+
   const formFields = useMemo(() => inputs.map((item, idx) => {
     const { type, name, placeholder } = item
 
@@ -30,8 +32,6 @@ export const ModalForm = forwardRef(({ formPlaceholder }, ref) => {
       </label>
     )
   }), [inputs])
-
-  const { question, formName, formSubmitText } = footerText
 
   return (
     <form
@@ -53,7 +53,7 @@ export const ModalForm = forwardRef(({ formPlaceholder }, ref) => {
         <button
           className="switch-form"
           type="button"
-          onClick={() => setVisibleForm(`${formName} transition`)}
+          onClick={() => setVisibleForm({ formName: formName, transition: 'transition' })}
           style={{ color: action }}>
           {formSubmitText}
         </button>

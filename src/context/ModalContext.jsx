@@ -4,11 +4,17 @@ const ModalContext = createContext()
 
 const ModalProvider = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false)
-  const [visibleForm, setVisibleForm] = useState('');
+  const [visibleForm, setVisibleForm] = useState({
+    formName: '',
+    transition: ''
+  })
 
   const openModal = (form) => {
     setIsOpen(true)
-    setVisibleForm(form)
+    setVisibleForm(prevState => ({
+      ...prevState,
+      formName: form
+    }))
   }
 
   const closeModal = () => setIsOpen(false)
