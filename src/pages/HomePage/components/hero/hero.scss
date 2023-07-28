@@ -1,5 +1,5 @@
-@import "../../assets/styles/core/mixins";
-@import "../../assets/styles/core/vars";
+@import "../../../../assets/styles/core/mixins";
+@import "../../../../assets/styles/core/vars";
 
 .hero {
   @include flexBox(flex-end, flex-start);
@@ -17,7 +17,7 @@
     bottom: 0;
     right: 0;
     z-index: -1;
-    background: url(../../assets/images/hero-illustration.svg) right bottom /
+    background: url(../../../../assets/images/hero-illustration.svg) right bottom /
       contain no-repeat;
 
     @media (width <= 768px) {

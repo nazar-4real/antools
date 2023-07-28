@@ -16,9 +16,9 @@ import { Like } from 'src/components/shared/Like'
 import { Attach } from 'src/components/shared/Attach'
 import { Loader } from 'src/components/shared/Loader'
 
-import { onPropToggle } from './Homepage'
+import { onPropToggle } from '../HomePage/Homepage'
 
-const LazyImg = lazy(() => import('../components/shared/LazyImg'))
+const LazyImg = lazy(() => import('../../components/shared/LazyImg'))
 
 const ToolPage = () => {
   const { toolName } = useParams()

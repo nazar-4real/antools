@@ -7,8 +7,8 @@ import { ThemeContext } from 'src/context/ThemeStore'
 import 'swiper/css'
 import './testimonials.scss'
 
-import { Section } from '../shared/Section'
-import { Text } from '../shared/Text'
+import { Section } from 'src/components/shared/Section'
+import { Text } from 'src/components/shared/Text'
 
 import testimonialWebp from 'src/assets/images/testimonials/testimonial.webp'
 import testimonialPng from 'src/assets/images/testimonials/testimonial.png'

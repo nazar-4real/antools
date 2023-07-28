@@ -12,7 +12,7 @@ import { Text } from '../shared/Text'
 import { Button } from '../shared/Button'
 import { ToolCard } from '../shared/ToolCard'
 
-import { onPropToggle } from 'src/pages/Homepage'
+import { onPropToggle } from 'src/pages/HomePage/Homepage'
 
 import { toolsDataArr } from 'src/data/toolsData'
 

@@ -1,9 +1,9 @@
-import Hero from 'src/components/hero/Hero'
+import Hero from './components/hero/Hero'
 import Tools from 'src/components/tools/Tools'
-import Brands from 'src/components/brands/Brands'
-import Newcomer from 'src/components/newcomer/Newcomer'
-import Testimonials from 'src/components/testimonials/Testimonials'
-import Contact from 'src/components/contact/Contact'
+import Brands from './components/brands/Brands'
+import Newcomer from './components/newcomer/Newcomer'
+import Testimonials from './components/testimonials/Testimonials'
+import Contact from './components/contact/Contact'
 
 export const onPropToggle = (prop, id, updateData) => {
   updateData(prevData =>

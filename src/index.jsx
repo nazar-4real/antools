@@ -4,13 +4,13 @@ import ReactDOM from 'react-dom/client'
 import { ThemeProvider } from './context/ThemeStore'
 import { ModalProvider } from './context/ModalContext'
 
-import Root from './components/Root'
+import AppRouter from './AppRouter'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <StrictMode>
     <ThemeProvider>
       <ModalProvider>
-        <Root />
+        <AppRouter />
       </ModalProvider>
     </ThemeProvider>
   </StrictMode>

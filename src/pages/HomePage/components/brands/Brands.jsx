@@ -4,8 +4,8 @@ import { ThemeContext } from 'src/context/ThemeStore'
 
 import './brands.scss'
 
-import { Section } from '../shared/Section'
-import { Title } from '../shared/Title'
+import { Section } from 'src/components/shared/Section'
+import { Title } from 'src/components/shared/Title'
 
 import microsoft from 'src/assets/images/brands/microsoft.svg'
 import google from 'src/assets/images/brands/google.svg'

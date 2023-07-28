@@ -1,6 +1,5 @@
-@use "sass:color";
-@import "../../assets/styles/core/vars";
-@import "../../assets/styles/core/mixins";
+@import "../../../../assets/styles/core/vars";
+@import "../../../../assets/styles/core/mixins";
 
 .testimonials {
   @media (width <= 768px) {

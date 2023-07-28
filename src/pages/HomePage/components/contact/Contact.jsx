@@ -1,10 +1,10 @@
 import './contact.scss'
 
-import { Section } from '../shared/Section'
-import { Title } from '../shared/Title'
-import { Text } from '../shared/Text'
-import { Form } from '../shared/Form'
-import { Button } from '../shared/Button'
+import { Section } from 'src/components/shared/Section'
+import { Title } from 'src/components/shared/Title'
+import { Text } from 'src/components/shared/Text'
+import { Form } from 'src/components/shared/Form'
+import { Button } from 'src/components/shared/Button'
 
 const Contact = () => (
   <Section className="contact">

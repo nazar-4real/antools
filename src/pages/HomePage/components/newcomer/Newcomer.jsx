@@ -2,14 +2,14 @@ import { useState, useMemo } from 'react'
 
 import './newcomer.scss'
 
-import { Section } from '../shared/Section'
-import { Title } from '../shared/Title'
-import { Text } from '../shared/Text'
-import { Button } from '../shared/Button'
+import { Section } from 'src/components/shared/Section'
+import { Title } from 'src/components/shared/Title'
+import { Text } from 'src/components/shared/Text'
+import { Button } from 'src/components/shared/Button'
 
-import { ToolCard } from '../shared/ToolCard'
+import { ToolCard } from 'src/components/shared/ToolCard'
 
-import { onPropToggle } from 'src/pages/Homepage'
+import { onPropToggle } from 'src/pages/HomePage/Homepage'
 
 import { newcomerToolsArr } from 'src/data/newcomerData'
 

@@ -4,11 +4,11 @@ import { ThemeContext } from 'src/context/ThemeStore'
 
 import './hero.scss'
 
-import { Button } from '../shared/Button'
-import { Form } from '../shared/Form'
-import { Section } from '../shared/Section'
-import { Title } from '../shared/Title'
-import { Text } from '../shared/Text'
+import { Button } from '../../../../components/shared/Button'
+import { Form } from '../../../../components/shared/Form'
+import { Section } from '../../../../components/shared/Section'
+import { Title } from '../../../../components/shared/Title'
+import { Text } from '../../../../components/shared/Text'
 
 import { ReactComponent as Facebook } from 'src/assets/images/social/facebook.svg'
 import { ReactComponent as Instagram } from 'src/assets/images/social/instagram.svg'

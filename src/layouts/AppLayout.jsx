@@ -5,12 +5,12 @@ import { ThemeContext } from 'src/context/ThemeStore'
 
 import 'src/assets/styles/main.scss'
 
-import Header from '../header/Header'
-import Footer from '../footer/Footer'
+import Header from 'src/components/header/Header'
+import Footer from 'src/components/footer/Footer'
 
-import Modal from '../shared/Modal'
+import Modal from 'src/components/shared/Modal'
 
-const App = () => {
+const AppLayout = () => {
   const { theme: { colors: { action, auxiliary, background } } } = useContext(ThemeContext)
 
   const bodyRef = useRef(document.body)
@@ -43,4 +43,4 @@ const App = () => {
   )
 }
 
-export default App
+export default AppLayout
