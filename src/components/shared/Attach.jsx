@@ -12,8 +12,10 @@ export const Attach = memo(({ attached, onChange, ...styles }) => {
       <input
         className={attached ? 'attached' : ''}
         type="checkbox"
+        name="attach"
         data-prop="attached"
-        onChange={onChange} />
+        onChange={onChange}
+        aria-label="Attach" />
       <svg
         className="attach-icon"
         width="26"

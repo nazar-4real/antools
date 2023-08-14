@@ -153,6 +153,7 @@ const Header = () => {
               defaultValue={theme}
               isSearchable={false}
               captureMenuScroll={false}
+              aria-label="Theme switcher"
               styles={{
                 '--optionBg': action,
                 ...selectStyles

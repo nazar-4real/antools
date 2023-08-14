@@ -47,6 +47,7 @@ const Hero = () => {
         href={url}
         key={id}
         target="_blank"
+        aria-label="Social media"
         style={{
           color: value === 'default' ? text : action
         }}>

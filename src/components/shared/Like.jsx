@@ -12,8 +12,10 @@ export const Like = memo(({ liked, onChange, ...styles }) => {
       <input
         className={liked ? 'liked' : ''}
         type="checkbox"
+        name="like"
         data-prop="liked"
-        onChange={onChange} />
+        onChange={onChange}
+        aria-label="Like" />
       <svg className="like-icon"
         width="26"
         height="22"
