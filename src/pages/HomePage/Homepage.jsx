@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useLocalStorage } from 'src/hooks/useLocalStorage'
 
 import Hero from './components/hero/Hero'
 import Tools from 'src/components/tools/Tools'
@@ -20,7 +20,7 @@ export const onPropToggle = (prop, id, updateData) => {
 }
 
 const Homepage = () => {
-  const [visibleToolsData, setVisibleToolsData] = useState(toolsDataArr.slice(0, 6))
+  const [visibleToolsData, setVisibleToolsData] = useLocalStorage('toolsData', toolsDataArr)
 
   const loadMoreTools = () => {
     const nextTools = toolsDataArr.slice(visibleToolsData.length, visibleToolsData.length + 3)

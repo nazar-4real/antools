@@ -1,7 +1,5 @@
-import { useState, useEffect, useMemo } from 'react'
+import { useEffect, useMemo } from 'react'
 import { useLocation } from 'react-router-dom'
-
-import { useLocalStorage } from 'src/hooks/useLocalStorage'
 
 import { DataService } from 'src/services/DataService'
 
@@ -18,12 +16,10 @@ import { onPropToggle } from 'src/pages/HomePage/Homepage'
 import { toolsDataArr } from 'src/data/toolsData'
 
 const Tools = ({ data, setData = null, loadMoreTools = null }) => {
-  const [storageTools, setStorageTools] = useLocalStorage('toolsData', data)
-
   const { pathname } = useLocation()
 
   useEffect(() => {
-    setStorageTools(data)
+    setData(data)
   }, [data])
 
   const propHandler = (prop, id) => {
@@ -33,38 +29,36 @@ const Tools = ({ data, setData = null, loadMoreTools = null }) => {
   const dataInstance = new DataService()
 
   useEffect(() => {
-    if (!pathname.includes('tools')) {
-      dataInstance.getPosts(data.length)
-        .then(posts => {
-          setData(prevToolsData => {
-            return prevToolsData.map((dataItem, idx) => {
-              const modifiedText = (wordCount) => {
-                const capitalizedString = `${posts[idx].body[0].toUpperCase()}${posts[idx].body.substring(1)}`
+    dataInstance.getPosts(data.length)
+      .then(posts => {
+        setData(prevToolsData => {
+          return prevToolsData.map((dataItem, idx) => {
+            const modifiedText = (wordCount) => {
+              const capitalizedString = `${posts[idx].body[0].toUpperCase()}${posts[idx].body.substring(1)}`
 
-                return capitalizedString
-                  .split(/[\s/]+/)
-                  .slice(0, wordCount)
-                  .reduce((string, word) => `${string} ${word}`, '')
-              }
+              return capitalizedString
+                .split(/[\s/]+/)
+                .slice(0, wordCount)
+                .reduce((string, word) => `${string} ${word}`, '')
+            }
 
-              return {
-                ...dataItem,
-                text: modifiedText(16)
-              }
-            })
+            return {
+              ...dataItem,
+              text: modifiedText(16)
+            }
           })
         })
-    }
+      })
   }, [])
 
   const rollUpCards = () => setData(prevData => prevData.slice(0, 6))
 
-  const toolsCards = useMemo(() => storageTools.map((dataItem) => (
+  const toolsCards = useMemo(() => data.map((dataItem) => (
     <ToolCard
       key={dataItem.id}
       toolData={dataItem}
       propHandler={propHandler} />
-  )), [storageTools, propHandler])
+  )), [data, propHandler])
 
   return (
     <Section className="tools">
