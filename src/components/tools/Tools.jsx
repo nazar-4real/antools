@@ -1,6 +1,8 @@
 import { useEffect, useMemo } from 'react'
 import { useLocation } from 'react-router-dom'
 
+import { useLocalStorage } from 'src/hooks/useLocalStorage'
+
 import { DataService } from 'src/services/DataService'
 
 import './tools.scss'
@@ -15,23 +17,30 @@ import { onPropToggle } from 'src/pages/HomePage/Homepage'
 
 import { toolsDataArr } from 'src/data/toolsData'
 
-const Tools = ({ data, setData = null, loadMoreTools = null }) => {
+const Tools = () => {
+  const [storageToolsData, setStorageToolsData] = useLocalStorage('toolsData', toolsDataArr.slice(0, 6))
+
   const { pathname } = useLocation()
 
   useEffect(() => {
-    setData(data)
-  }, [data])
+    setStorageToolsData(storageToolsData)
+  }, [storageToolsData])
 
   const propHandler = (prop, id) => {
-    onPropToggle(prop, id, setData)
+    onPropToggle(prop, id, setStorageToolsData)
+  }
+
+  const loadMoreTools = () => {
+    const nextTools = toolsDataArr.slice(storageToolsData.length, storageToolsData.length + 3)
+    setStorageToolsData(prevTools => [...prevTools, ...nextTools])
   }
 
   const dataInstance = new DataService()
 
   useEffect(() => {
-    dataInstance.getPosts(data.length)
+    dataInstance.getPosts(storageToolsData.length)
       .then(posts => {
-        setData(prevToolsData => {
+        setStorageToolsData(prevToolsData => {
           return prevToolsData.map((dataItem, idx) => {
             const modifiedText = (wordCount) => {
               const capitalizedString = `${posts[idx].body[0].toUpperCase()}${posts[idx].body.substring(1)}`
@@ -51,14 +60,14 @@ const Tools = ({ data, setData = null, loadMoreTools = null }) => {
       })
   }, [])
 
-  const rollUpCards = () => setData(prevData => prevData.slice(0, 6))
+  const rollUpCards = () => setStorageToolsData(prevData => prevData.slice(0, 6))
 
-  const toolsCards = useMemo(() => data.map((dataItem) => (
+  const toolsCards = useMemo(() => storageToolsData.map((dataItem) => (
     <ToolCard
       key={dataItem.id}
       toolData={dataItem}
       propHandler={propHandler} />
-  )), [data, propHandler])
+  )), [storageToolsData, propHandler])
 
   return (
     <Section className="tools">
@@ -74,7 +83,7 @@ const Tools = ({ data, setData = null, loadMoreTools = null }) => {
       <div className="tools__cards">
         {toolsCards}
       </div>
-      {data.length < toolsDataArr.length ? (
+      {storageToolsData.length < toolsDataArr.length ? (
         <Button
           className="outlined"
           href="/"
