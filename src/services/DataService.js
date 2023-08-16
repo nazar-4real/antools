@@ -1,5 +1,5 @@
 class DataService {
-  _api = import.meta.env.VITE_DATABASE_URL
+  _api = import.meta.env.VITE_APP_DATABASE_URL
 
   getResource = async (url) => {
     try {
