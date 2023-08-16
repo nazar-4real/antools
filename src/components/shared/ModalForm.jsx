@@ -36,7 +36,8 @@ export const ModalForm = forwardRef(({ formPlaceholder }, ref) => {
   return (
     <form
       className={`modal__form ${className}`}
-      ref={ref} >
+      ref={ref}
+      method="POST">
       <Title>
         {title}
       </Title>
