@@ -1,13 +1,14 @@
-import { useContext } from 'react'
+import { useContext, forwardRef } from 'react'
 
 import { ThemeContext } from 'src/context/ThemeStore'
 
-export const Button = ({ className = '', children, style, ...attrs }) => {
+export const Button = forwardRef(({ className = '', children, style, ...attrs }, ref) => {
   const { theme: { value, colors: { action, text, background } } } = useContext(ThemeContext)
 
   return (
     <button
       className={`main-btn ${className}`.trim()}
+      ref={ref}
       style={{
         background: action,
         color: ['brown', 'plum'].includes(value) ? background : text,
@@ -22,4 +23,4 @@ export const Button = ({ className = '', children, style, ...attrs }) => {
       {children}
     </button>
   )
-}
+})
