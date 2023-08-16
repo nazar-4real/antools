@@ -171,7 +171,8 @@ section {
   }
 
   &-input {
-    @include insertFont(14px, 21px);
+    @include insertFont(18px, 26px);
+    text-overflow: ellipsis;
     color: var(--inputCol, $opacityWhite);
     -webkit-text-fill-color: var(--inputCol, $opacityWhite);
     caret-color: var(--inputCol, $opacityWhite);
@@ -486,7 +487,7 @@ section {
   }
 
   &-action {
-    @include flexBox(center, center);
+    position: relative;
     flex-shrink: 0;
     border-radius: 8px;
     width: 42px;
@@ -499,6 +500,10 @@ section {
     }
 
     svg {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
       width: 25px;
       height: 21px;
       object-fit: contain;

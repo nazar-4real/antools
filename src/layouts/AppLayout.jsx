@@ -26,7 +26,9 @@ const AppLayout = () => {
   const location = useLocation()
 
   useEffect(() => {
-    window.scrollTo(0, 0)
+    setTimeout(() => {
+      window.scroll(0, 0)
+    }, 10)
   }, [location])
 
   return (
