@@ -72,7 +72,7 @@ const Testimonials = () => {
         <figure className="testimonials__slide-figure">
           <picture className="testimonials__slide-img">
             <source srcSet={webp} type="image/webp" />
-            <img src={png} alt="Testimonial" sizes="lg:100vw" />
+            <img src={png} alt="Testimonial" sizes="(max-width: 991px) 100vw, 450px" />
           </picture>
           <figcaption
             className="testimonials__slide-figcaption"
