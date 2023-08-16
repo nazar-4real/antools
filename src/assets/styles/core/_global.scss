@@ -173,12 +173,14 @@ section {
   &-input {
     @include insertFont(14px, 21px);
     color: var(--inputCol, $opacityWhite);
-    caret-color: currentColor;
+    -webkit-text-fill-color: var(--inputCol, $opacityWhite);
+    caret-color: var(--inputCol, $opacityWhite);
     align-self: stretch;
     width: 100%;
     border: none;
     background: transparent;
     outline: none;
+    transition: background 1000s;
 
     &::placeholder {
       color: inherit;
