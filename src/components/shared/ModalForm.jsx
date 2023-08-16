@@ -30,23 +30,20 @@ export const ModalForm = forwardRef(({ formPlaceholder }, ref) => {
       ref.current,
       import.meta.env.VITE_APP_PUBLIC_KEY
     )
-      .then(
-        result => {
-          alert('Message sent!')
+      .then(() => {
+        alert('Registration is successful. Thank you')
 
-          ref.current.querySelectorAll('input').forEach(input => {
-            input.value = ''
-          })
-
-          submitBtnRef.current.textContent = submitText
-
-          console.log(result.text)
-        },
-        error => {
-          alert('An error occurred. Try again')
-          console.error(error.text)
-        }
-      )
+        ref.current.querySelectorAll('input').forEach(input => {
+          input.value = ''
+        })
+      })
+      .catch((error) => {
+        alert('An error occurred. Try again')
+        console.log(error)
+      })
+      .finally(() => {
+        submitBtnRef.current.textContent = submitText
+      })
   }
 
   const formFields = useMemo(() => inputs.map((item, idx) => {

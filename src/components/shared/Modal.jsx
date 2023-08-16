@@ -12,8 +12,8 @@ const formPlaceholder = {
     inputs: [
       {
         type: 'email',
-        name: 'name',
-        placeholder: 'Your email or username'
+        name: 'email',
+        placeholder: 'Your email'
       },
       {
         type: 'password',
