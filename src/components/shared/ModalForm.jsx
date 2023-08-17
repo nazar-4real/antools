@@ -57,6 +57,7 @@ export const ModalForm = forwardRef(({ formPlaceholder }, ref) => {
           className="form-input"
           type={type}
           name={name}
+          required
           placeholder={placeholder}
           autoComplete={name} />
       </label>
