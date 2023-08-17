@@ -16,9 +16,13 @@ export const ModalForm = forwardRef(({ formPlaceholder }, ref) => {
 
   const { isModalOpen, setVisibleForm } = useContext(ModalContext)
 
-  const { className, title, inputs, submitText = title, footerText } = formPlaceholder
-
-  const { question, formName, formSubmitText } = footerText
+  const {
+    className,
+    title,
+    inputs,
+    submitText = title,
+    footerText: { question, formName, formSubmitText }
+  } = formPlaceholder
 
   const submitBtnRef = useRef(null)
 
@@ -51,9 +55,15 @@ export const ModalForm = forwardRef(({ formPlaceholder }, ref) => {
       password: ''
     },
     validationSchema: object({
-      name: string().required('Required'),
-      email: string().email('Invalid email').required('Required'),
-      password: string().min(8, 'Must contain at least 8 characters').required('Required')
+      name: string()
+        .min(2, 'Must contain at least 2 characters')
+        .required('Input is required'),
+      email: string()
+        .email('Invalid email')
+        .required('Input is required'),
+      password: string()
+        .min(8, 'Must contain at least 8 characters')
+        .required('Input is required')
     }),
     onSubmit: () => {
       submitForm()

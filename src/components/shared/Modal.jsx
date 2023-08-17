@@ -1,4 +1,4 @@
-import { useEffect, useRef, useContext } from 'react'
+import { useState, useEffect, useRef, useContext } from 'react'
 
 import { ThemeContext } from 'src/context/ThemeStore'
 import { ModalContext } from 'src/context/ModalContext'
@@ -98,8 +98,14 @@ const Modal = () => {
   const sigininRef = useRef(null)
   const siginupRef = useRef(null)
 
-  const signinScrollHeight = sigininRef.current?.scrollHeight
-  const signupScrollHeight = siginupRef.current?.scrollHeight
+  const [modalDialogHeight, setModalDialogHeight] = useState(null)
+
+  useEffect(() => {
+    const signinScrollHeight = sigininRef.current?.scrollHeight
+    const signupScrollHeight = siginupRef.current?.scrollHeight
+
+    setModalDialogHeight(Math.max(signinScrollHeight, signupScrollHeight))
+  }, [])
 
   return (
     <div
@@ -136,7 +142,7 @@ const Modal = () => {
             style={{
               '--labelBg': value === 'default' ? auxiliary : background,
               '--inputCol': value === 'plum' ? `${action}aa` : `${text}aa`,
-              height: `${Math.max(signinScrollHeight, signupScrollHeight)}px`
+              height: `${modalDialogHeight}px`
             }}>
             <ModalForm
               formPlaceholder={formPlaceholder.signinPlaceholder}

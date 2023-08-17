@@ -164,10 +164,6 @@ section {
 
     &.with-error {
       border: 1px solid #dc143c44;
-
-      @media screen and (width <= 767px) {
-        padding-bottom: 20px;
-      }
     }
   }
 
@@ -210,17 +206,20 @@ section {
       height: 100%;
       padding: 15px;
       border-radius: 0 5px 5px 0;
+      color: #dc143ccc;
+      font-size: 14px;
 
       @media screen and (width <= 767px) {
-        top: unset;
+        top: 98%;
         transform: unset;
         right: unset;
         left: 20px;
-        bottom: 5px;
         height: unset;
         padding: 0;
         border-radius: unset;
         background: transparent !important;
+        font-size: 12px;
+        line-height: 18px;
       }
     }
   }
