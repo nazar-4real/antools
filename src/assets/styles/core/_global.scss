@@ -150,13 +150,25 @@ section {
     gap: 10px;
     background: var(--labelBg, $dark);
     border-radius: 15px;
+    position: relative;
     width: 100%;
-    padding: 8px 11px 8px 21px;
     transition: all 0.3s;
-  }
 
-  &-label:focus-within {
-    box-shadow: 0 0 5px 0px rgba(255, 255, 255, 0.4);
+    &:not(.modal .form-label) {
+      padding: 8px 11px 8px 21px;
+    }
+
+    &:focus-within {
+      box-shadow: 0 0 5px 0px rgba(255, 255, 255, 0.4);
+    }
+
+    &.with-error {
+      border: 1px solid #dc143c44;
+
+      @media screen and (width <= 767px) {
+        padding-bottom: 20px;
+      }
+    }
   }
 
   .search-icon {
@@ -179,12 +191,37 @@ section {
     align-self: stretch;
     width: 100%;
     border: none;
+    border-radius: inherit;
+    padding: 0;
     background: transparent;
     outline: none;
     transition: background 100000s;
 
     &::placeholder {
       color: inherit;
+    }
+
+    &--error {
+      @include flexBox(center, center);
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      right: 0;
+      height: 100%;
+      padding: 15px;
+      border-radius: 0 5px 5px 0;
+
+      @media screen and (width <= 767px) {
+        top: unset;
+        transform: unset;
+        right: unset;
+        left: 20px;
+        bottom: 5px;
+        height: unset;
+        padding: 0;
+        border-radius: unset;
+        background: transparent !important;
+      }
     }
   }
 }
@@ -335,6 +372,9 @@ section {
     .form-label {
       border-radius: 5px;
       margin-bottom: 20px;
+    }
+
+    .form-input {
       padding: 15px 20px;
     }
 

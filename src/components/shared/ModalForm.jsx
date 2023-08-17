@@ -1,5 +1,8 @@
-import { useContext, useRef, forwardRef, useMemo } from 'react'
+import { useEffect, useContext, useRef, forwardRef, useMemo } from 'react'
+
 import emailjs from '@emailjs/browser'
+import { useFormik, ErrorMessage } from 'formik'
+import { object, string } from 'yup'
 
 import { ThemeContext } from 'src/context/ThemeStore'
 import { ModalContext } from 'src/context/ModalContext'
@@ -9,9 +12,9 @@ import { Title } from './Title'
 import { Text } from './Text'
 
 export const ModalForm = forwardRef(({ formPlaceholder }, ref) => {
-  const { theme: { colors: { action, text } } } = useContext(ThemeContext)
+  const { theme: { colors: { action, auxiliary, text } } } = useContext(ThemeContext)
 
-  const { setVisibleForm } = useContext(ModalContext)
+  const { isModalOpen, setVisibleForm } = useContext(ModalContext)
 
   const { className, title, inputs, submitText = title, footerText } = formPlaceholder
 
@@ -19,9 +22,7 @@ export const ModalForm = forwardRef(({ formPlaceholder }, ref) => {
 
   const submitBtnRef = useRef(null)
 
-  const submitForm = (e) => {
-    e.preventDefault()
-
+  const submitForm = () => {
     submitBtnRef.current.textContent = 'Sending...'
 
     emailjs.sendForm(
@@ -32,10 +33,6 @@ export const ModalForm = forwardRef(({ formPlaceholder }, ref) => {
     )
       .then(() => {
         alert('Registration is successful. Thank you')
-
-        ref.current.querySelectorAll('input').forEach(input => {
-          input.value = ''
-        })
       })
       .catch((error) => {
         alert('An error occurred. Try again')
@@ -43,32 +40,67 @@ export const ModalForm = forwardRef(({ formPlaceholder }, ref) => {
       })
       .finally(() => {
         submitBtnRef.current.textContent = submitText
+        formik.resetForm()
       })
   }
+
+  const formik = useFormik({
+    initialValues: {
+      name: '',
+      email: '',
+      password: ''
+    },
+    validationSchema: object({
+      name: string().required('Required'),
+      email: string().email('Invalid email').required('Required'),
+      password: string().min(8, 'Must contain at least 8 characters').required('Required')
+    }),
+    onSubmit: () => {
+      submitForm()
+    }
+  })
+
+  useEffect(() => {
+    !isModalOpen && formik.resetForm()
+  }, [isModalOpen])
 
   const formFields = useMemo(() => inputs.map((item, idx) => {
     const { type, name, placeholder } = item
 
     return (
       <label
-        className="form-label"
+        className={`form-label
+         ${(formik.errors[name] && formik.touched[name])
+            ? 'with-error'
+            : ''}`.trim()
+        }
         key={idx}>
         <input
           className="form-input"
           type={type}
           name={name}
-          required
           placeholder={placeholder}
-          autoComplete={name} />
+          autoComplete={name}
+          onChange={formik.handleChange}
+          value={formik.values[name]} />
+        {
+          formik.errors[name]
+          && formik.touched[name]
+          && <span
+            className="form-input--error"
+            style={{ background: auxiliary }}>
+            {formik.errors[name]}
+          </span>
+        }
       </label>
     )
-  }), [inputs])
+  }), [inputs, formik])
 
   return (
     <form
       className={`modal__form ${className}`}
       ref={ref}
-      onSubmit={submitForm}>
+      onSubmit={formik.handleSubmit}>
       <Title>
         {title}
       </Title>
@@ -85,7 +117,7 @@ export const ModalForm = forwardRef(({ formPlaceholder }, ref) => {
         <button
           className="switch-form"
           type="button"
-          onClick={() => setVisibleForm({ formName: formName, transition: 'transition' })}
+          onClick={() => setVisibleForm({ formName, transition: 'transition' })}
           style={{ color: action }}>
           {formSubmitText}
         </button>
