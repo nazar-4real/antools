@@ -26,7 +26,7 @@ export const ModalForm = forwardRef(({ formPlaceholder }, ref) => {
 
   const submitBtnRef = useRef(null)
 
-  const submitForm = () => {
+  const sendEmail = () => {
     submitBtnRef.current.textContent = 'Sending...'
 
     emailjs.sendForm(
@@ -56,18 +56,16 @@ export const ModalForm = forwardRef(({ formPlaceholder }, ref) => {
     },
     validationSchema: object({
       name: string()
-        .min(2, 'Must contain at least 2 characters')
+        .min(2, ({ min }) => `Minimum ${min} characters`)
         .required('Input is required'),
       email: string()
-        .email('Invalid email')
+        .email('Invalid format')
         .required('Input is required'),
       password: string()
-        .min(8, 'Must contain at least 8 characters')
+        .min(8, ({ min }) => `Minimum ${min} characters`)
         .required('Input is required')
     }),
-    onSubmit: () => {
-      submitForm()
-    }
+    onSubmit: () => sendEmail()
   })
 
   useEffect(() => {
