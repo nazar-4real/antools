@@ -1,7 +1,7 @@
 import { useEffect, useContext, useRef, forwardRef, useMemo } from 'react'
 
 import emailjs from '@emailjs/browser'
-import { useFormik, ErrorMessage } from 'formik'
+import { useFormik } from 'formik'
 import { object, string } from 'yup'
 
 import { ThemeContext } from 'src/context/ThemeStore'
