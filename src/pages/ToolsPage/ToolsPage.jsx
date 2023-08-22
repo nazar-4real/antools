@@ -1,9 +1,17 @@
+import { Helmet } from 'react-helmet-async'
+
 import Tools from 'src/components/tools/Tools'
 
 const ToolsPage = () => {
 
   return (
-    <Tools />
+    <>
+      <Helmet>
+        <title>Tools</title>
+      </Helmet>
+
+      <Tools />
+    </>
   )
 }
 

@@ -1,5 +1,6 @@
 import { useContext, lazy, Suspense } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
+import { Helmet } from 'react-helmet-async'
 
 import { ThemeContext } from 'src/context/ThemeStore'
 
@@ -37,35 +38,43 @@ const ToolPage = () => {
 
   const { theme: { colors: { action } } } = useContext(ThemeContext)
 
+  const capitalizePageTitle = name.toLowerCase().replace(/\b\w/g, (letter) => letter.toUpperCase())
+
   return (
-    <Section className="tool">
-      <div className="tool__picture">
-        <figure className="tool__figure">
-          <Suspense fallback={<Loader />}>
-            <LazyImg
-              className="tool__figure-img"
-              src={icon}
-              alt={name} />
-          </Suspense>
-          <figcaption className="tool__figcaption">
-            <Text style={{ color: action }}>{status}</Text>
-          </figcaption>
-        </figure>
-        <div className="tool__actions">
-          <Like liked={liked} onChange={switchProp} />
-          <Attach attached={attached} onChange={switchProp} />
+    <>
+      <Helmet>
+        <title>{capitalizePageTitle}</title>
+      </Helmet>
+
+      <Section className="tool">
+        <div className="tool__picture">
+          <figure className="tool__figure">
+            <Suspense fallback={<Loader />}>
+              <LazyImg
+                className="tool__figure-img"
+                src={icon}
+                alt={name} />
+            </Suspense>
+            <figcaption className="tool__figcaption">
+              <Text style={{ color: action }}>{status}</Text>
+            </figcaption>
+          </figure>
+          <div className="tool__actions">
+            <Like liked={liked} onChange={switchProp} />
+            <Attach attached={attached} onChange={switchProp} />
+          </div>
         </div>
-      </div>
-      <div className="tool__info">
-        <Title style={{ margin: 0 }}>{name}</Title>
-        <Text>{text}</Text>
-        <Button
-          onClick={() => navigate(-1)}
-          style={{ marginTop: '40px' }}>
-          Go back
-        </Button>
-      </div>
-    </Section>
+        <div className="tool__info">
+          <Title style={{ margin: 0 }}>{name}</Title>
+          <Text>{text}</Text>
+          <Button
+            onClick={() => navigate(-1)}
+            style={{ marginTop: '40px' }}>
+            Go back
+          </Button>
+        </div>
+      </Section>
+    </>
   )
 }
 

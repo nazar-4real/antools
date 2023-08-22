@@ -1,3 +1,5 @@
+import { Helmet } from 'react-helmet-async'
+
 import Hero from './components/hero/Hero'
 import Tools from 'src/components/tools/Tools'
 import Brands from './components/brands/Brands'
@@ -18,6 +20,10 @@ export const onPropToggle = (prop, id, updateData) => {
 const Homepage = () => {
   return (
     <>
+      <Helmet>
+        <title>Antools SPA</title>
+      </Helmet>
+
       <Hero />
       <Tools />
       <Brands />
