@@ -1,14 +1,43 @@
-## Antools SPA
+# Antools - simple SPA
 
-### **A simple React JS + Vite JS app with the ability to switch color themes**
+The application is initialized using the React JS + Vite JS
 
-### Deployed on the Vercel platform and available for viewing at this [Link](https://antools-spa.vercel.app/)
+## Getting Started
 
-> #### Before running the application, copy the **`.env.example`** file, rename it to **`.env`** and populate the required environment variables
-
-> To start the application, run:
+1. Clone the repository:
 
 ```
-npm i
+git clone https://github.com/nazar-4real/antools.git
+```
+
+2. Install dependencies:
+
+```
+npm install
+```
+
+3. Copy **.env.example**, rename it to **.env** and set the required environment variables
+4. Start the project:
+
+```
 npm start
 ```
+
+After these steps, your project should start running and be accessible at [http://localhost:3000](http://localhost:3000)
+
+## Building for Production
+
+To create an optimized working build for further deployment on the server:
+
+```
+npm run build
+```
+
+## Helpful Resources
+
+- [React JS Docs](https://react.dev/) - official React JS documentation
+- [Vite JS Docs](https://vitejs.dev/) - official Vite JS documentation
+
+## Contributing
+
+If you have ideas for improvements or found any issues, please create a pull request or open an issue in the project repository.
