@@ -1,6 +1,10 @@
+import { useContext } from 'react'
+import { Helmet } from 'react-helmet-async'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 import AppLayout from './layouts/AppLayout'
+
+import { ThemeContext } from './context/ThemeStore'
 
 import Homepage from 'src/pages/HomePage/Homepage'
 import ToolsPage from './pages/ToolsPage/ToolsPage'
@@ -31,8 +35,16 @@ const router = createBrowserRouter([
 ])
 
 const AppRouter = () => {
+  const { theme: { colors: { background } } } = useContext(ThemeContext)
+
   return (
-    <RouterProvider router={router} />
+    <>
+      <Helmet>
+        <meta name="theme-color" content={background} />
+      </Helmet>
+
+      <RouterProvider router={router} />
+    </>
   )
 }
 
